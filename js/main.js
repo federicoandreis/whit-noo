@@ -228,6 +228,9 @@ function onSwipeCommit(card, direction) {
   if (_inputLocked) return;
   _inputLocked = true;
 
+  // Re-unlock audio on every swipe gesture — required on iOS WebKit
+  // where the AudioContext can silently re-suspend between interactions.
+  initAudio();
   playSwipe(direction);
 
   const { cluesGained, clueNames, endingTriggered } = resolveOutcome(card, direction);

@@ -26,12 +26,16 @@ let _enabled         = true;
 // ─── Initialisation ──────────────────────────────────────────────────────────
 
 /**
- * Creates the AudioContext.  Must be called inside a user-gesture handler.
- * Safe to call multiple times — re-calling from a new gesture will attempt
- * a synchronous resume, which is required on iOS Safari.
+ * Creates (or unlocks) the AudioContext.
+ * Must be called synchronously inside a user-gesture handler every time —
+ * on iOS (Safari and Chrome, which both use WebKit) the context only truly
+ * unlocks when BOTH of these happen inside the synchronous gesture call stack:
+ *   1. ctx.resume() is called
+ *   2. An actual audio node is started (even a silent one)
+ * Calling resume() alone is not sufficient on iOS.
  */
 export function initAudio() {
-  // Restore saved preference on first call
+  // First call: create the context and gain graph
   if (!ctx) {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -47,12 +51,20 @@ export function initAudio() {
     masterGain.connect(ctx.destination);
   }
 
-  // Always attempt a synchronous resume when called from a user gesture.
-  // On iOS Safari, ctx.resume() is only honoured if called synchronously
-  // within the event handler — not inside a .then() callback.
-  if (ctx.state === 'suspended') {
+  // Every call (not just the first): resume + play a silent node.
+  // This is the only pattern that reliably unlocks iOS WebKit audio.
+  if (ctx.state !== 'running') {
     ctx.resume().catch(() => {/* ignore */});
   }
+  // Silent 1-sample buffer — physically starts audio processing on iOS.
+  // Zero cost; inaudible; must be synchronous in the gesture handler.
+  try {
+    const buf = ctx.createBuffer(1, 1, ctx.sampleRate);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(ctx.destination);
+    src.start(0);
+  } catch (_) {/* ignore if already running cleanly */}
 }
 
 // ─── Enable / disable ────────────────────────────────────────────────────────
