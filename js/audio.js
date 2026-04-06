@@ -51,20 +51,21 @@ export function initAudio() {
     masterGain.connect(ctx.destination);
   }
 
-  // Every call (not just the first): resume + play a silent node.
-  // This is the only pattern that reliably unlocks iOS WebKit audio.
+  // Only attempt unlock when actually suspended — avoids creating needless
+  // nodes on every touchstart once the context is already running.
   if (ctx.state !== 'running') {
     ctx.resume().catch(() => {/* ignore */});
+    // Play a 1-sample silent buffer.  On iOS WebKit, calling resume() alone
+    // is not enough — an actual audio node must also be started within the
+    // synchronous user-gesture call stack.
+    try {
+      const buf = ctx.createBuffer(1, 1, ctx.sampleRate);
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(ctx.destination);
+      src.start(0);
+    } catch (_) {/* ignore */}
   }
-  // Silent 1-sample buffer — physically starts audio processing on iOS.
-  // Zero cost; inaudible; must be synchronous in the gesture handler.
-  try {
-    const buf = ctx.createBuffer(1, 1, ctx.sampleRate);
-    const src = ctx.createBufferSource();
-    src.buffer = buf;
-    src.connect(ctx.destination);
-    src.start(0);
-  } catch (_) {/* ignore if already running cleanly */}
 }
 
 // ─── Enable / disable ────────────────────────────────────────────────────────

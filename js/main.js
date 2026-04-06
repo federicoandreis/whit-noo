@@ -228,9 +228,6 @@ function onSwipeCommit(card, direction) {
   if (_inputLocked) return;
   _inputLocked = true;
 
-  // Re-unlock audio on every swipe gesture — required on iOS WebKit
-  // where the AudioContext can silently re-suspend between interactions.
-  initAudio();
   playSwipe(direction);
 
   const { cluesGained, clueNames, endingTriggered } = resolveOutcome(card, direction);
@@ -360,6 +357,26 @@ async function onPlayAgain() {
   resetState();
   await onChapterSelected(_currentChapterMeta);
 }
+
+// ─── iOS audio unlock ─────────────────────────────────────────────────────────
+//
+// On iOS, ALL browsers use WebKit, which only unlocks the AudioContext from
+// trusted user-gesture events: touchstart, touchend, click.
+//
+// The swipe commit callback fires from a CSS `transitionend` event — which
+// is synthetic and NOT a trusted gesture.  By the time onSwipeCommit runs,
+// the gesture context is gone and iOS blocks audio.
+//
+// The fix: call initAudio() on document touchstart (the very first moment of
+// any touch interaction).  The AudioContext is created and unlocked here, so
+// all subsequent audio calls succeed regardless of how they are triggered.
+
+function _unlockAudioOnGesture() {
+  initAudio();
+}
+
+document.addEventListener('touchstart', _unlockAudioOnGesture, { passive: true, capture: true });
+document.addEventListener('click',      _unlockAudioOnGesture, { capture: true });
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 
