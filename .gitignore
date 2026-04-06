@@ -1,0 +1,27 @@
+# Claude Code development files
+.claude/
+CLAUDE.md
+PRD.md
+README_chapters.md
+
+# Root-level working files (source material, superseded by chapters/ directory)
+/chapter.json
+/chapter-index.json
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Node (if any tooling is ever added)
+node_modules/
+npm-debug.log*

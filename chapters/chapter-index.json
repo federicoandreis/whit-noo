@@ -1,0 +1,11 @@
+[
+  {
+    "id": "body-in-the-close",
+    "title": "The Body in the Close",
+    "subtitle": "An Auld Reekie Mystery",
+    "author": "Federico Andreis",
+    "difficulty": "standard",
+    "estimated_minutes": 12,
+    "file": "chapters/body-in-the-close/chapter.json"
+  }
+]

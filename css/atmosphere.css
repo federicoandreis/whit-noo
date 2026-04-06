@@ -1,0 +1,166 @@
+/* atmosphere.css — vignette, paper texture, Victorian decorative effects */
+
+/* === Background vignette === */
+
+#screen-game::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Card paper texture === */
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' x='0' y='0' fill='rgba(44,30,23,0.04)'/%3E%3Crect width='1' height='1' x='2' y='2' fill='rgba(44,30,23,0.04)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Fog effect at bottom of game screen === */
+
+.game__fog {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.6),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Gas-lamp glow effect on accent elements === */
+
+.topbar__title,
+.menu__title {
+  text-shadow:
+    0 0 8px rgba(212, 160, 23, 0.5),
+    0 0 20px rgba(212, 160, 23, 0.2);
+}
+
+/* === Menu background texture === */
+
+#screen-menu {
+  background-image:
+    radial-gradient(ellipse at top, rgba(44, 62, 107, 0.08) 0%, transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 2px,
+      rgba(255, 255, 255, 0.01) 4px
+    );
+}
+
+/* === Briefing screen texture === */
+
+#screen-briefing {
+  background-image:
+    radial-gradient(ellipse at top, rgba(44, 62, 107, 0.06) 0%, transparent 60%);
+}
+
+/* === Ending screen decoration === */
+
+#screen-ending {
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 0, 0, 0.06) 0%, transparent 60%);
+}
+
+/* === Overlay backdrop enhancement === */
+
+.overlay {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 255, 255, 0.005) 4px,
+      rgba(255, 255, 255, 0.005) 8px
+    );
+}
+
+/* === Decorative separators === */
+
+.menu__divider {
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-gold),
+    transparent
+  );
+  margin: var(--space-4) auto;
+  opacity: 0.4;
+}
+
+/* === Chapter card decorative corner === */
+
+.chapter-card::before {
+  content: '✦';
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  color: var(--accent-gold);
+  opacity: 0.2;
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.chapter-card {
+  position: relative;
+}
+
+/* === Clue item pip === */
+
+.clue-item::after {
+  content: '';
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 4px;
+  height: 4px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.clue-item {
+  position: relative;
+}
+
+/* === Scroll bar styling (Webkit) === */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fog-grey);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}

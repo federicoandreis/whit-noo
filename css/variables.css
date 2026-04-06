@@ -1,0 +1,56 @@
+/* variables.css — CSS custom properties */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* === Colour palette === */
+  --bg-dark:        #0D0D0D;   /* Night sky / deep background */
+  --bg-mid:         #1A1A1A;   /* Soot / card backs */
+  --bg-card:        #F5E6C8;   /* Aged parchment / card face */
+  --text-dark:      #2B1B17;   /* Ink / primary text on light */
+  --text-light:     #F5E6C8;   /* Light text on dark backgrounds */
+  --text-muted:     #7A7A7A;   /* Fog grey / secondary text */
+  --accent-gold:    #D4A017;   /* Gas-lamp amber / highlights */
+  --accent-red:     #8B0000;   /* Danger / blood / urgency */
+  --accent-blue:    #2C3E6B;   /* Edinburgh night sky / police */
+  --fog-grey:       #7A7A7A;   /* Fog / borders on dark */
+  --white:          #FFFFFF;   /* White / highlights */
+
+  /* === Typography === */
+  --font-pixel:     'Press Start 2P', monospace;
+  --font-serif:     'Crimson Text', Georgia, serif;
+
+  --text-xs:        0.625rem;  /* 10px — small pixel text */
+  --text-sm:        0.75rem;   /* 12px — pixel UI labels */
+  --text-base:      1rem;      /* 16px — narrative body */
+  --text-lg:        1.125rem;  /* ~18px — large body */
+  --text-xl:        1.5rem;    /* 24px — headings */
+  --text-2xl:       2rem;      /* 32px — title */
+
+  /* === Spacing === */
+  --space-1:        0.25rem;
+  --space-2:        0.5rem;
+  --space-3:        0.75rem;
+  --space-4:        1rem;
+  --space-5:        1.25rem;
+  --space-6:        1.5rem;
+  --space-8:        2rem;
+  --space-10:       2.5rem;
+  --space-12:       3rem;
+
+  /* === Layout === */
+  --topbar-height:  3.5rem;
+  --bottombar-height: 4rem;
+  --card-max-width: 440px;
+  --card-radius:    4px;
+
+  /* === Z-index layers === */
+  --z-card:         10;
+  --z-overlay:      100;
+  --z-toast:        200;
+
+  /* === Transitions === */
+  --transition-fast: 150ms ease-out;
+  --transition-mid:  200ms ease-out;
+  --transition-slow: 300ms ease-out;
+}

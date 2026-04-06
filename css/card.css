@@ -1,0 +1,208 @@
+/* card.css — card component: styling, swipe transforms, choice labels */
+
+/* === Card base === */
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: var(--card-max-width);
+  background: var(--bg-card);
+  border-radius: var(--card-radius);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(44, 30, 23, 0.3),
+    inset 0 0 0 2px rgba(44, 30, 23, 0.15);
+  transform-origin: center bottom;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  cursor: grab;
+  overflow: visible;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+/* Victorian double-line border effect */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(44, 30, 23, 0.25);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === Portrait area === */
+
+.card__portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-5) var(--space-3);
+  position: relative;
+}
+
+.card__portrait canvas,
+.card__portrait img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  width: 128px;
+  height: 128px;
+  border: 2px solid rgba(44, 30, 23, 0.3);
+  background: var(--bg-dark);
+}
+
+/* === Narrative area === */
+
+.card__narrative {
+  padding: var(--space-3) var(--space-6) var(--space-5);
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--text-dark);
+  text-align: center;
+  min-height: 6rem;
+}
+
+/* === Choice labels — fade in on drag === */
+
+.card__choices {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0 var(--space-3) var(--space-5);
+  gap: var(--space-2);
+  position: relative;
+  z-index: 2;
+}
+
+.card__choice-left,
+.card__choice-right {
+  flex: 1;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-pixel);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.card__choice-left {
+  text-align: left;
+  color: var(--accent-blue);
+  border-left: 2px solid var(--accent-blue);
+  background: rgba(44, 62, 107, 0.08);
+}
+
+.card__choice-right {
+  text-align: right;
+  color: var(--accent-red);
+  border-right: 2px solid var(--accent-red);
+  background: rgba(139, 0, 0, 0.08);
+}
+
+/* Reveal choices on drag */
+.card.dragging-left .card__choice-left {
+  opacity: 1;
+}
+.card.dragging-right .card__choice-right {
+  opacity: 1;
+}
+
+/* On desktop: show choices faintly at rest so the player knows they exist */
+@media (min-width: 600px) {
+  .card__choice-left,
+  .card__choice-right {
+    opacity: 0.25;
+  }
+  .card.dragging-left .card__choice-left,
+  .card.dragging-right .card__choice-right {
+    opacity: 1;
+  }
+}
+
+/* Desktop: bigger portrait */
+@media (min-width: 600px) {
+  .card__portrait canvas,
+  .card__portrait img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* === Swipe animations === */
+
+.card.flying-left {
+  /* Transition starts from the current drag position (captured before !important kicks in) */
+  transition: transform 200ms cubic-bezier(0.4, 0, 1, 1), opacity 180ms ease-in;
+  transform: translateX(-140vw) rotate(-25deg) !important;
+  opacity: 0;
+}
+
+.card.flying-right {
+  transition: transform 200ms cubic-bezier(0.4, 0, 1, 1), opacity 180ms ease-in;
+  transform: translateX(140vw) rotate(25deg) !important;
+  opacity: 0;
+}
+
+.card.snapping-back {
+  /* Spring-like overshoot on the way back */
+  transition: transform 360ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(0) rotate(0deg) !important;
+}
+
+/* === Card enter animation === */
+
+.card.entering {
+  /* Use 'both' not 'forwards' — but swipe.js removes this class on drag start
+     so the fill mode never interferes with inline transforms */
+  animation: card-enter 160ms ease-out both;
+}
+
+@keyframes card-enter {
+  from {
+    transform: translateY(16px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* === Decision tint overlays === */
+
+.card__tint-left,
+.card__tint-right {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
+}
+
+.card__tint-left {
+  background: linear-gradient(to right, rgba(44, 62, 107, 0.18), transparent);
+}
+
+.card__tint-right {
+  background: linear-gradient(to left, rgba(139, 0, 0, 0.18), transparent);
+}
+
+.card.dragging-left .card__tint-left {
+  opacity: 1;
+}
+
+.card.dragging-right .card__tint-right {
+  opacity: 1;
+}

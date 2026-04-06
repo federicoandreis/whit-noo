@@ -1,0 +1,230 @@
+/* layout.css — page grid, screen management, responsive breakpoints */
+
+/* === Screen management === */
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.screen--active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Main menu layout === */
+
+#screen-menu {
+  background: var(--bg-dark);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: var(--space-8) var(--space-4) var(--space-6);
+}
+
+.menu__header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.menu__title {
+  font-family: var(--font-pixel);
+  font-size: var(--text-xl);
+  color: var(--accent-gold);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+  margin-bottom: var(--space-3);
+}
+
+.menu__subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.menu__chapters {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: var(--space-8);
+}
+
+.menu__section-title {
+  font-family: var(--font-pixel);
+  font-size: var(--text-xs);
+  color: var(--accent-gold);
+  margin-bottom: var(--space-4);
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.menu__footer {
+  margin-top: auto;
+  text-align: center;
+  padding-top: var(--space-6);
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* === Game screen layout === */
+
+#screen-game {
+  background: var(--bg-dark);
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.game__topbar {
+  flex: 0 0 var(--topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  background: var(--bg-mid);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  position: relative;
+  z-index: var(--z-card);
+}
+
+.game__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* overflow must be visible so the card can move freely during drag;
+     the screen element (position:fixed, inset:0) acts as the clip boundary */
+  overflow: visible;
+  padding: var(--space-4);
+}
+
+.game__bottombar {
+  flex: 0 0 var(--bottombar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  background: var(--bg-mid);
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  position: relative;
+  z-index: var(--z-card);
+}
+
+/* Card slot — where the card lives */
+#card-slot {
+  position: relative;
+  width: 100%;
+  max-width: var(--card-max-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outcome panel — fades in after swipe */
+#outcome-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+  z-index: calc(var(--z-card) + 1);
+}
+
+#outcome-panel.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === Ending screen layout === */
+
+#screen-ending {
+  background: var(--bg-dark);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: var(--space-8) var(--space-4) var(--space-6);
+}
+
+.ending__content {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* === Briefing screen (overlay on menu) === */
+
+#screen-briefing {
+  background: var(--bg-dark);
+  z-index: 50;
+}
+
+.briefing__content {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* === Desktop breakpoint (600px+) === */
+
+@media (min-width: 600px) {
+  .menu__title {
+    font-size: var(--text-2xl);
+  }
+
+  #screen-menu {
+    padding: var(--space-12) var(--space-6) var(--space-8);
+  }
+
+  .menu__chapters {
+    max-width: 560px;
+  }
+
+  .menu__links {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .game__main {
+    padding: var(--space-8);
+  }
+
+  .briefing__content {
+    max-width: 600px;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .ending__content {
+    max-width: 560px;
+  }
+}
+
+/* === Wide desktop (900px+) === */
+
+@media (min-width: 900px) {
+  :root {
+    --topbar-height:    4rem;
+    --bottombar-height: 4.5rem;
+    --card-max-width:   500px;
+  }
+}

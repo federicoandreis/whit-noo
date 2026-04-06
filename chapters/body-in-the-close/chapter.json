@@ -1,0 +1,1287 @@
+{
+  "meta": {
+    "id": "body-in-the-close",
+    "title": "The Body in the Close",
+    "subtitle": "An Auld Reekie Mystery",
+    "author": "Federico Andreis",
+    "version": "1.1",
+    "description": "A cloth merchant is found dead in Mary King's Close. Inspector McLevy has until nightfall to uncover the truth.",
+    "setting": "Edinburgh, October 1855",
+    "difficulty": "standard",
+    "max_turns": 35,
+    "estimated_minutes": 12,
+    "credits": "Inspired by the public domain casebooks of James McLevy, Edinburgh's first detective (1833–1860s). This is an original work of interactive fiction."
+  },
+
+  "characters": [
+    {
+      "id": "mclevy",
+      "name": "Inspector McLevy",
+      "description": "Edinburgh's tenacious detective. Irish-born, sharp-eyed, philosophical.",
+      "sprite": "detective",
+      "is_suspect": false
+    },
+    {
+      "id": "agnes_brodie",
+      "name": "Mrs Agnes Brodie",
+      "description": "The victim's wife. Composed and well-dressed, with violet eyes that give nothing away.",
+      "sprite": "lady",
+      "is_suspect": true
+    },
+    {
+      "id": "duncan_shaw",
+      "name": "Duncan Shaw",
+      "description": "The victim's business partner. Ruddy-faced, loud, and recently in dispute over profits.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    },
+    {
+      "id": "rab_mcnair",
+      "name": "Rab McNair",
+      "description": "A known fence and petty criminal from the Cowgate. Owes debts to half the Old Town.",
+      "sprite": "urchin",
+      "is_suspect": true
+    },
+    {
+      "id": "dr_fergusson",
+      "name": "Dr Fergusson",
+      "description": "The Brodies' family physician. Elderly, respected, and nervous.",
+      "sprite": "doctor",
+      "is_suspect": true
+    },
+    {
+      "id": "constable_begg",
+      "name": "Constable Begg",
+      "description": "First officer on the scene. Young, earnest, and slightly overwhelmed.",
+      "sprite": "constable",
+      "is_suspect": false
+    },
+    {
+      "id": "jeannie",
+      "name": "Jeannie",
+      "description": "A sharp-eyed street urchin who knows every close and wynd in the Old Town.",
+      "sprite": "urchin",
+      "is_suspect": false
+    },
+    {
+      "id": "mrs_dalrymple",
+      "name": "Mrs Dalrymple",
+      "description": "The Brodies' housekeeper. Loyal, tight-lipped, and deeply disapproving of the police.",
+      "sprite": "lady",
+      "is_suspect": false
+    },
+    {
+      "id": "tam_the_barkeep",
+      "name": "Tam",
+      "description": "Barkeep at the White Hart Inn. Hears everything, says little — unless ye buy a dram.",
+      "sprite": "barkeep",
+      "is_suspect": false
+    }
+  ],
+
+  "solution": {
+    "suspect": "agnes_brodie",
+    "motive": "clue_insurance_policy",
+    "method": "clue_laudanum_bottle"
+  },
+
+  "clues": [
+    {
+      "id": "clue_handkerchief",
+      "name": "Monogrammed Handkerchief",
+      "description": "Fine linen with violet-thread initials: A.B.",
+      "detail": "Found clutched in the dead man's right hand. The embroidery is exquisite — violet thread on white linen, the initials A.B. The work of a skilled hand. Several people in the victim's circle share these initials.",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_laudanum_bottle",
+      "name": "Laudanum Bottle",
+      "description": "Half-empty, from Thin's Pharmacy on the Cowgate.",
+      "detail": "A small brown bottle, the cork loosely replaced. The label reads 'Thin & Co., Pharmaceutical Chemists, Cowgate.' Laudanum is common enough — used for toothache, sleeplessness, nerves. But the dose remaining suggests a significant quantity was removed recently.",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_pharmacy_ledger",
+      "name": "Pharmacy Ledger Entry",
+      "description": "A purchase record from Thin's Pharmacy, dated two days before the murder.",
+      "detail": "The apothecary's ledger shows a sale of four ounces of laudanum tincture on the 14th of October — two days before the body was found. The buyer is recorded only as 'a lady in a dark cloak, well-spoken.' The apothecary notes she paid in coin, not on account.",
+      "sprite": "book",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_insurance_policy",
+      "name": "Life Insurance Policy",
+      "description": "A £500 policy on William Brodie's life, beneficiary: his wife.",
+      "detail": "Found among the victim's papers at his office. Issued by the Scottish Widows' Fund, the policy pays £500 upon the death of Mr William Brodie to his wife, Mrs Agnes Brodie. The policy matures on the 31st of October — fifteen days from now. After that date, the premiums double.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_whisky_glass",
+      "name": "Whisky Glass",
+      "description": "A crystal tumbler found near the body, with a faint residue.",
+      "detail": "A fine crystal glass, the kind a man drinks from at home, not in a close. There is a trace of amber liquid in the bottom and a faintly bitter smell beneath the whisky. Someone brought this man his last drink.",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_midnight_woman",
+      "name": "Witness: Cloaked Woman",
+      "description": "A street urchin saw a woman in a dark cloak leaving the close around midnight.",
+      "detail": "Jeannie says: 'Aye, I seen her. A lady, no a working lass — ye could tell by the way she walked. Dark cloak, hood up. Came oot the close around midnight, walking fast, heading towards the New Town. She had somethin' under her arm — a wee bundle, like.'",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_business_dispute",
+      "name": "Business Dispute",
+      "description": "The victim and his partner, Duncan Shaw, were in a bitter dispute over profits.",
+      "detail": "According to the clerk at Brodie & Shaw, Cloth Merchants, the two partners had been arguing for months. Shaw believed Brodie was skimming profits. Voices were raised. Threats were made — 'I'll see ye ruined, Brodie!' But Shaw has an alibi: he was at a Masonic dinner until well past midnight, witnessed by twenty men.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_shaw_alibi",
+      "name": "Shaw's Alibi",
+      "description": "Duncan Shaw was at a Masonic dinner on the night of the murder.",
+      "detail": "The secretary of Lodge Canongate Kilwinning confirms Mr Shaw was present from seven o'clock until half past midnight. He was seen by no fewer than twenty brothers. His alibi is watertight.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_mcnair_debt",
+      "name": "McNair's Gambling Debt",
+      "description": "Rab McNair owed Brodie thirty pounds — a fortune for a man like him.",
+      "detail": "The barkeep at the White Hart says McNair had been drinking heavily and muttering about 'that bastard Brodie' for weeks. Brodie had lent him money, and McNair couldn't pay it back. But McNair's method would be a knife in a dark close, not poison. And he can barely read, let alone forge a pharmacy purchase.",
+      "sprite": "coin",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_brodie_nervous",
+      "name": "Brodie's Nerves",
+      "description": "The victim had been anxious and unwell in recent weeks.",
+      "detail": "The apothecary recalls Brodie coming in for headache powders and sleeping draughts. 'A nervous sort, lately. Worried about money, I'd say. Or his health. He asked me once about the symptoms of slow poisoning — I thought he was reading too many penny dreadfuls.'",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_housekeeper_statement",
+      "name": "Housekeeper's Statement",
+      "description": "Mrs Dalrymple says Mrs Brodie retired early on the night of the murder.",
+      "detail": "'The mistress went to bed at nine, same as always. I brought her a cup of tea and she was reading. I didnae hear her leave the house. But then, I sleep in the attic, and these old houses...' She pauses. 'Mrs Brodie is a fine lady. I'll hear no word against her.'",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_fergusson_prescription",
+      "name": "Dr Fergusson's Prescription",
+      "description": "Dr Fergusson had prescribed Mrs Brodie laudanum for 'women's troubles.'",
+      "detail": "The doctor confirms he prescribed a small quantity of laudanum to Mrs Brodie some months ago. 'Perfectly routine. Many ladies take it. The dose I prescribed would not harm a child, let alone a grown man.' He seems flustered. 'I hope you are not suggesting anything improper, Inspector.'",
+      "sprite": "doctor",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_torn_ticket",
+      "name": "Torn Theatre Ticket",
+      "description": "Half a ticket for the Royal Lyceum, dated the night of the murder.",
+      "detail": "Found in the victim's coat pocket. A ticket for the evening performance of 'The Corsican Brothers' at the Royal Lyceum Theatre. But the performance was at eight o'clock — and the victim was found in the close, not at the theatre. Did he change his plans? Or was he lured away?",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_clerk_statement",
+      "name": "Clerk's Statement",
+      "description": "The victim stayed late at his office, said he had 'business' that evening.",
+      "detail": "'Mr Brodie was in fine spirits yesterday afternoon, sir. He said he had business to attend to in the evening — wouldn't say what. Left the office around six o'clock. That's the last I saw of him.' The clerk seems genuinely shaken.",
+      "sprite": "gentleman",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_mourning_ribbon",
+      "name": "Mourning Ribbon",
+      "description": "Black ribbon purchased the day before the murder — before Brodie was dead.",
+      "detail": "A stall-holder in the Grassmarket sold black mourning ribbon to a well-dressed woman in a dark cloak on the 14th of October — the day before Brodie was found dead. She was purchasing mourning goods before her husband was dead. The stall-holder remembers because she paid without haggling.",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_brodie_will",
+      "name": "Brodie's Will",
+      "description": "Brodie's last will, drawn up three months ago, leaves everything to his wife.",
+      "detail": "The will is dated the 15th of July and signed by two witnesses. Everything — the house on Heriot Row, the business, the investments — passes to Agnes Brodie. With the business in trouble, the insurance policy is the reliable piece. Five hundred pounds, clean and clear.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_note_in_close",
+      "name": "Note Found in the Close",
+      "description": "A damp note: 'Come at midnight. A.B.' — found behind a loose stone.",
+      "detail": "The note is written on good paper in a neat, educated hand. 'Come at midnight. A.B.' Four words. The initials A.B. match Mrs Agnes Brodie. The note was presumably delivered to Brodie before the evening — perhaps explaining why he abandoned the theatre.",
+      "sprite": "letter",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_fergusson_confession",
+      "name": "Dr Fergusson's Admission",
+      "description": "Dr Fergusson gave Mrs Brodie additional laudanum on the night of the murder.",
+      "detail": "The doctor visited his consulting rooms around ten o'clock that evening. Mrs Brodie arrived claiming her nerves were bad and requesting laudanum. Fergusson dispensed a small bottle without recording it in his ledger. He now believes he supplied the murder weapon. His distress appears genuine.",
+      "sprite": "doctor",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_message_to_brodie",
+      "name": "The Delivery Message",
+      "description": "A delivery boy brought Brodie a message that evening, directing him to the close.",
+      "detail": "Tam the barkeep sent the delivery boy to Brodie at his office. The message had come from 'a lady' — the boy could not describe her further. Brodie received it and apparently changed his plans for the evening, abandoning the theatre ticket and going to the close instead.",
+      "sprite": "letter",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_embroidery_match",
+      "name": "The Violet Thread",
+      "description": "Violet embroidery thread in Mrs Brodie's workbasket matches the handkerchief exactly.",
+      "detail": "The thread on the spool in Mrs Brodie's parlour is the same shade of violet as the embroidery on the handkerchief found in the dead man's hand. The shade is not common — it is imported from France, available only at a handful of Edinburgh haberdashers. The handkerchief was made by Mrs Brodie.",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_business_in_trouble",
+      "name": "The Business Was Failing",
+      "description": "Brodie & Shaw was in serious financial trouble — a fact Agnes Brodie may have discovered.",
+      "detail": "According to Shaw, the cloth business had been losing money for over a year, concealed by optimistic bookkeeping. If Agnes Brodie had learned that her husband's estate would be worth little after his debts, the £500 insurance policy — clean, immediate, unimpeachable — would become far more attractive.",
+      "sprite": "coin",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_watchman_testimony",
+      "name": "Night Watchman's Account",
+      "description": "The close was empty at ten; the body was there by half past midnight.",
+      "detail": "Old Tam the nightwatchman passed the close on his regular rounds at ten o'clock and saw nothing. By half past midnight, Brodie was dead. Around eleven-thirty, he heard a woman's voice — a single cry or exclamation — from the direction of the close. He thought nothing of it at the time.",
+      "sprite": "footprint",
+      "is_red_herring": false
+    }
+  ],
+
+  "cards": [
+    {
+      "id": "card_opening",
+      "type": "sequence",
+      "sequence_position": 0,
+      "sprite": "close",
+      "narrative": "The fog hangs thick in the close as ye descend the worn stone steps. Constable Begg is waiting, lantern in hand, his face pale. 'A bad business, Inspector. The body's just ahead — a Mr William Brodie, cloth merchant. Found by a nightwatchman at dawn.'",
+      "left": {
+        "label": "Examine the body",
+        "outcome": {
+          "text": "Ye kneel beside the corpse. Brodie lies face-up on the cobbles, his expression frozen in a grimace. No visible wounds. His right hand clutches a scrap of fine white linen. There is a faint, bitter smell about his lips.",
+          "grant_clues": ["clue_handkerchief", "clue_whisky_glass"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Question Constable Begg",
+        "outcome": {
+          "text": "'Found at dawn by old Tam the nightwatchman, sir. No sign of a struggle. The close was empty — no witnesses that I could find. His wallet's still in his pocket, so it wasnae robbery. There's a glass near his hand, sir. Whisky, by the smell of it.'",
+          "grant_clues": ["clue_clerk_statement"],
+          "set_flags": ["questioned_begg"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_return_to_body",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_begg"],
+        "excludes_flags": ["examined_body"]
+      },
+      "weight": 5,
+      "sprite": "close",
+      "narrative": "The body still lies in the close. Ye havenae examined it properly yet. The constable hovers nearby.",
+      "left": {
+        "label": "Examine the body now",
+        "outcome": {
+          "text": "Ye kneel beside the corpse. No visible wounds. His right hand clutches a scrap of white linen, and there's a crystal glass near his other hand. A faint bitter smell lingers about his lips.",
+          "grant_clues": ["clue_handkerchief", "clue_whisky_glass"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Press on — time is short",
+        "outcome": {
+          "text": "Ye make a note to return. But the clock is ticking, and the living have more to say than the dead.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_jeannie",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "urchin",
+      "character": "jeannie",
+      "narrative": "A wee lassie with sharp eyes and a sharper tongue materialises from a doorway in the Grassmarket. 'Inspector McLevy! I seen somethin' last night. But information costs, ye ken.'",
+      "left": {
+        "label": "Pay her a shilling",
+        "outcome": {
+          "text": "'There was a lady, aye. No a working lass — ye could tell. Dark cloak, hood up. Came oot the close around midnight. Walking fast, towards the New Town. Had somethin' under her arm.' Jeannie pockets the coin and vanishes.",
+          "grant_clues": ["clue_midnight_woman"],
+          "set_flags": ["has_witness_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Dismiss her",
+        "outcome": {
+          "text": "'Suit yersel', Inspector.' She shrugs and melts back into the crowd. Information has a price in Auld Reekie, and ye've just decided not to pay it.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_apothecary",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["examined_body"],
+        "excludes_flags": ["visited_apothecary"]
+      },
+      "weight": 3,
+      "sprite": "merchant",
+      "narrative": "The apothecary at Thin's Pharmacy on the Cowgate regards ye over his spectacles. 'Inspector McLevy. I wondered when ye'd darken my door.'",
+      "left": {
+        "label": "Ask about laudanum sales",
+        "outcome": {
+          "text": "He produces a battered ledger and runs his finger down the columns. 'Here. Four ounces of laudanum tincture, sold on the fourteenth. A lady in a dark cloak. Well-spoken. Paid in coin.' He looks up. 'I keep good records, Inspector.'",
+          "grant_clues": ["clue_laudanum_bottle", "clue_pharmacy_ledger"],
+          "set_flags": ["visited_apothecary", "has_pharmacy_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Ask about Brodie's health",
+        "outcome": {
+          "text": "'Brodie? Aye, he came in regular. Headache powders, sleeping draughts. Nervous sort, lately. Asked me once about the symptoms of slow poisoning.' The apothecary shakes his head. 'I thought he was reading too many penny dreadfuls.'",
+          "grant_clues": ["clue_brodie_nervous"],
+          "set_flags": ["visited_apothecary"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_shaw_office",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "duncan_shaw",
+      "narrative": "Duncan Shaw, Brodie's business partner, is pacing his office on the Royal Mile. His face is red, his collar loosened. 'McLevy! This is a damned outrage. Who would do such a thing?'",
+      "left": {
+        "label": "Ask about the business dispute",
+        "outcome": {
+          "text": "'Aye, we had our differences! What partners don't? But I'd never—' He stops. 'I was at the Lodge dinner all evening. Twenty men can vouch for me. Ask any of them.' He mops his brow with a silk handkerchief.",
+          "grant_clues": ["clue_business_dispute", "clue_shaw_alibi"],
+          "set_flags": ["has_business_dispute"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Ask about Mrs Brodie",
+        "outcome": {
+          "text": "Shaw's expression shifts. 'Agnes? A fine woman. A very fine woman.' He pauses a moment too long. 'She and Brodie seemed... content enough. Though I did wonder about the insurance business. Five hundred pounds is a great deal of money.'",
+          "grant_clues": ["clue_insurance_policy"],
+          "set_flags": ["has_insurance_evidence"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_white_hart",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "barkeep",
+      "character": "tam_the_barkeep",
+      "narrative": "The White Hart Inn is dark and smoky. Tam the barkeep polishes a glass with a rag that's seen better days. 'What'll it be, Inspector? A dram, or just questions?'",
+      "left": {
+        "label": "Ask about Rab McNair",
+        "outcome": {
+          "text": "'McNair? Aye, he's been in here every night, drinking away what he doesnae have. Muttering about Brodie — the man lent him thirty pounds and McNair couldnae pay it back. But McNair's no a poisoner, Inspector. He's a knife man, if he's anything. And he can barely spell his own name.'",
+          "grant_clues": ["clue_mcnair_debt"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the night of the murder",
+        "outcome": {
+          "text": "'Quiet night, all told. McNair was here till closing. Shaw came in late — after his dinner, he said — and had a brandy. Didnae see Mrs Brodie, if that's what yer asking. She doesnae come to places like this.' He gives ye a knowing look.",
+          "set_flags": ["asked_about_murder_night"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_brodie_house",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["visited_brodie_house"]
+      },
+      "weight": 3,
+      "sprite": "interior",
+      "character": "mrs_dalrymple",
+      "narrative": "The Brodie residence on Heriot Row is handsome — New Town respectability in grey stone. The housekeeper, Mrs Dalrymple, opens the door a crack. 'Mrs Brodie is indisposed, Inspector.'",
+      "left": {
+        "label": "Insist on seeing Mrs Brodie",
+        "outcome": {
+          "text": "Agnes Brodie receives ye in the parlour. She is pale but composed, dressed in black. 'My husband was a good man, Inspector. I cannot imagine who would wish him harm.' Her hands are steady. Her eyes are dry. She offers ye tea.",
+          "set_flags": ["visited_brodie_house", "met_agnes"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Question the housekeeper instead",
+        "outcome": {
+          "text": "'The mistress went to bed at nine, same as always. I brought her tea and she was reading. I didnae hear her leave the house.' Mrs Dalrymple's jaw is set. 'She is a fine lady. I'll hear no word against her.'",
+          "grant_clues": ["clue_housekeeper_statement"],
+          "set_flags": ["visited_brodie_house", "knows_about_agnes"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_agnes_indirect_encounter",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["knows_about_agnes"],
+        "excludes_flags": ["met_agnes"]
+      },
+      "weight": 5,
+      "sprite": "lady",
+      "character": "agnes_brodie",
+      "narrative": "Returning past Heriot Row on another matter, ye find the front door open. Agnes Brodie herself stands in the doorway, watching the street. She sees ye coming and does not retreat.",
+      "left": {
+        "label": "Approach and introduce yourself",
+        "outcome": {
+          "text": "She receives ye with a composure that borders on coldness. 'Inspector McLevy. Mrs Dalrymple told me ye had called.' She answers yer questions briefly and volunteers nothing. Her eyes are dry. Her hands are steady. Whatever she feels, it does not show.",
+          "set_flags": ["met_agnes"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Observe her and walk on",
+        "outcome": {
+          "text": "She watches ye pass with those violet eyes. Even at a distance, her stillness is remarkable. A woman in shock moves differently. A woman in grief moves differently. Agnes Brodie is neither. Ye make a note.",
+          "set_flags": ["met_agnes"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_agnes_directly",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_agnes", "has_witness_evidence"],
+        "excludes_flags": ["confronted_agnes"]
+      },
+      "weight": 4,
+      "sprite": "lady",
+      "character": "agnes_brodie",
+      "narrative": "Ye return to Heriot Row. Mrs Brodie is in the garden, cutting roses with a pair of silver scissors. She sees ye and does not flinch.",
+      "left": {
+        "label": "Ask about the cloaked woman",
+        "outcome": {
+          "text": "'A woman in a dark cloak? In the Old Town at midnight? Inspector, that could be half the city.' A pause. 'I was in my bed. Ask Mrs Dalrymple.' But there is something in her eyes — a flicker, quick as a candle in a draught.",
+          "set_flags": ["confronted_agnes"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the insurance policy",
+        "outcome": {
+          "text": "'The insurance? William took it out years ago. A prudent man provides for his family.' She clips a rose stem cleanly. 'Five hundred pounds will not bring him back, Inspector.' The scissors flash in the afternoon light.",
+          "grant_clues": ["clue_insurance_policy"],
+          "set_flags": ["confronted_agnes", "has_insurance_evidence"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_dr_fergusson",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["visited_apothecary"],
+        "excludes_flags": ["visited_fergusson"]
+      },
+      "weight": 3,
+      "sprite": "doctor",
+      "character": "dr_fergusson",
+      "narrative": "Dr Fergusson's consulting rooms on George Street are cluttered with books and specimen jars. The doctor peers at ye over half-moon spectacles. 'Inspector. I've been expecting you.'",
+      "left": {
+        "label": "Ask about Mrs Brodie's prescription",
+        "outcome": {
+          "text": "'I prescribed a small quantity of laudanum to Mrs Brodie some months ago. For women's troubles — perfectly routine. Many ladies take it.' He tugs at his collar. 'The dose I prescribed would not harm a child. I hope you are not suggesting anything improper.'",
+          "grant_clues": ["clue_fergusson_prescription"],
+          "set_flags": ["visited_fergusson"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the cause of death",
+        "outcome": {
+          "text": "'Without a proper post-mortem, I can only speculate. But the bitter smell, the grimace, the absence of external wounds — it is consistent with an overdose of opiates. Laudanum, most likely.' He shakes his head. 'A terrible way to go.'",
+          "set_flags": ["visited_fergusson", "cause_of_death_known"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_mcnair_encounter",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["clue_mcnair_debt"],
+        "excludes_flags": ["confronted_mcnair"]
+      },
+      "weight": 2,
+      "sprite": "urchin",
+      "character": "rab_mcnair",
+      "narrative": "Ye find Rab McNair slumped against a wall in the Cowgate, stinking of whisky. He scrambles to his feet when he sees ye. 'McLevy! I didnae do it! Whatever they're sayin', I didnae!'",
+      "left": {
+        "label": "Press him on the debt",
+        "outcome": {
+          "text": "'Aye, I owed him. Thirty pound. But I was gonna pay it back! I had a scheme, see—' He stops. 'I was at the White Hart all night. Tam'll tell ye. I'm no a murderer, Inspector. I'm just... unlucky.' He looks it.",
+          "set_flags": ["confronted_mcnair"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask if he saw anything",
+        "outcome": {
+          "text": "'I seen Shaw — the partner — drinking at the White Hart after his fancy dinner. And I seen that doctor, Fergusson, walking past the close around ten. But that's no unusual — his rooms arenae far.' He scratches his head. 'Didnae see the wife. She doesnae come down here.'",
+          "set_flags": ["confronted_mcnair"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_office_search",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["searched_office"]
+      },
+      "weight": 2,
+      "sprite": "interior",
+      "narrative": "Brodie's office on the Royal Mile is tidy — ledgers in neat rows, correspondence filed. His clerk hovers anxiously. 'Shall I leave ye to it, Inspector?'",
+      "left": {
+        "label": "Search the desk",
+        "outcome": {
+          "text": "Among the papers ye find a life insurance policy from the Scottish Widows' Fund. Five hundred pounds, payable upon death to Mrs Agnes Brodie. The policy matures at month's end. After that, the premiums double.",
+          "grant_clues": ["clue_insurance_policy"],
+          "set_flags": ["searched_office", "has_insurance_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Question the clerk further",
+        "outcome": {
+          "text": "'He had a theatre ticket for last night — the Lyceum. But he never went. Said his plans had changed.' The clerk produces a torn ticket from the waste basket. 'I thought it odd. He loves the theatre.'",
+          "grant_clues": ["clue_torn_ticket", "clue_clerk_statement"],
+          "set_flags": ["searched_office"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_fog_rolls_in",
+      "type": "always",
+      "weight": 1,
+      "sprite": "close",
+      "narrative": "The haar rolls in from the Firth, thick and cold. The gas lamps along the High Street become smudges of amber in the murk. Time is passing, Inspector.",
+      "left": {
+        "label": "Press on through the fog",
+        "outcome": {
+          "text": "Ye pull yer coat tighter and continue. The city will not wait for ye, and neither will the truth.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Stop and think",
+        "outcome": {
+          "text": "Ye stand still in the murk and let yer mind work. The threads are there — but they won't pull taut yet. Not enough to go on. Back to work.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_red_herring_theatre",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["clue_torn_ticket"],
+        "excludes_flags": ["checked_theatre"]
+      },
+      "weight": 2,
+      "sprite": "street",
+      "narrative": "The Royal Lyceum Theatre is closed for the afternoon. A stagehand is sweeping the steps. He remembers the performance of 'The Corsican Brothers' last night. 'Full house, aye.'",
+      "left": {
+        "label": "Ask if Brodie attended",
+        "outcome": {
+          "text": "'Couldnae say, sir. We get hundreds through the doors. But his ticket was for the stalls — those seats were all filled.' A dead end. The ticket tells ye Brodie planned to attend, but something changed his mind. Or someone changed it for him.",
+          "set_flags": ["checked_theatre"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Move on — the theatre is a distraction",
+        "outcome": {
+          "text": "Ye pocket the thought and turn back towards the Old Town. Not every thread leads somewhere, and ye cannae afford to waste the light.",
+          "set_flags": ["checked_theatre"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_dangerous_close",
+      "type": "always",
+      "weight": 1,
+      "sprite": "close",
+      "narrative": "A noise echoes from a dark close off the Canongate. A figure darts away as ye approach. The walls press close, slick with damp.",
+      "left": {
+        "label": "Pursue the figure",
+        "outcome": {
+          "text": "Ye give chase through the labyrinth of the Old Town. The figure is fast, but ye know these closes better than most. After a breathless pursuit — nothing. Just a stray cat and yer own ragged breathing. Time wasted.",
+          "turn_cost": 3
+        }
+      },
+      "right": {
+        "label": "Let them go",
+        "outcome": {
+          "text": "Not every shadow hides a killer. Ye've more pressing matters than chasing ghosts through the wynds.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_final_pieces",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["has_pharmacy_evidence", "has_insurance_evidence", "has_witness_evidence"],
+        "excludes_flags": ["ready_to_accuse"]
+      },
+      "weight": 5,
+      "sprite": "detective",
+      "narrative": "Ye stand beneath a gas lamp on the North Bridge, the city spread below ye. The laudanum. The ledger. The cloaked woman. The insurance money. The pieces are falling into place. A voice in yer head — yer own — whispers: 'Whit noo, McLevy?'",
+      "left": {
+        "label": "Aye — the pieces fit",
+        "outcome": {
+          "text": "The laudanum. The ledger. The cloaked figure. The insurance money. Ye know what happened in that close — and ye know whose hand arranged it. The Procurator Fiscal is waiting. Whenever ye're ready, Inspector.",
+          "set_flags": ["ready_to_accuse"],
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Gather more evidence first",
+        "outcome": {
+          "text": "Not yet. One loose thread could unravel the whole case. The Procurator Fiscal will accept nothing that a clever advocate can pick apart.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_church_bells",
+      "type": "always",
+      "weight": 1,
+      "sprite": "street",
+      "narrative": "St Giles' Cathedral sends its bells across the Old Town. Another hour gone. The fog thickens. Somewhere in this city, a killer goes about their day as though nothing has happened.",
+      "left": {
+        "label": "Keep moving",
+        "outcome": {
+          "text": "Ye press on through the crowds. The city does not slow for the dead.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Sit and think a moment",
+        "outcome": {
+          "text": "Ye find a bench in Greyfriars Kirkyard. The dead make good company for a thinking man. The bells echo off the stones. The case turns in yer mind, but the connections aren't there yet. Keep at it.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_greyfriars",
+      "type": "always",
+      "one_shot": true,
+      "weight": 1,
+      "sprite": "graveyard",
+      "character": "mrs_dalrymple",
+      "narrative": "A shortcut through Greyfriars Kirkyard takes ye past the old stones. A familiar figure is crouched by a grave, apparently weeping. It is Mrs Dalrymple, the housekeeper.",
+      "left": {
+        "label": "Approach her",
+        "outcome": {
+          "text": "She startles badly. 'Inspector! I was just — I come here sometimes. To think.' She dabs her eyes. 'The Brodies were good to me for twenty years. Twenty years.' She will say nothing more, but her grief seems genuine.",
+          "set_flags": ["met_dalrymple_alone"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Leave her to her grief",
+        "outcome": {
+          "text": "Some moments are not yers to intrude upon. Ye pass on through the kirkyard, the old stones watching.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_market_stall",
+      "type": "always",
+      "one_shot": true,
+      "weight": 1,
+      "sprite": "market",
+      "narrative": "The Grassmarket is alive with noise — fishwives, ballad-sellers, a man with a trained monkey. A stall-holder beckons ye over. 'Inspector! I sell to every house in the New Town. I had an unusual order last week.'",
+      "left": {
+        "label": "Hear him out",
+        "outcome": {
+          "text": "'A lady — fine dress, dark cloak — asked me for black ribbon. Mourning ribbon. The day before Brodie was found.' He counts on his fingers. 'That were the fourteenth.' Ye make a note.",
+          "grant_clues": ["clue_mourning_ribbon"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "No time for gossip",
+        "outcome": {
+          "text": "The man shrugs and turns back to his trade. Perhaps it was nothing. Edinburgh is full of ladies in dark cloaks.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_brodie_will",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["searched_office"],
+        "excludes_flags": ["read_brodie_will"]
+      },
+      "weight": 3,
+      "sprite": "document",
+      "narrative": "Among the papers from Brodie's office, the clerk hesitantly produces a second document: a last will and testament, drawn up just three months ago. 'I didnae think it relevant, sir, but...'",
+      "left": {
+        "label": "Read it carefully",
+        "outcome": {
+          "text": "The will leaves everything — the business, the house, the investments — to Agnes Brodie. Everything. With one exception: a small annuity to Mrs Dalrymple, the housekeeper. Brodie trusted his wife completely.",
+          "grant_clues": ["clue_brodie_will"],
+          "set_flags": ["read_brodie_will"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Skim it quickly",
+        "outcome": {
+          "text": "'Everything to the wife,' ye note briefly, and set it aside. The details can wait — or perhaps they cannot.",
+          "set_flags": ["read_brodie_will"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_constable_begg_followup",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_begg"],
+        "excludes_flags": ["begg_second_visit"]
+      },
+      "weight": 2,
+      "sprite": "constable",
+      "character": "constable_begg",
+      "narrative": "Constable Begg flags ye down near the Tron Kirk. He looks like he has not slept. 'Inspector — I found something. In the close, tucked behind a loose stone. I should've reported it straight away but I didnae ken if it mattered.'",
+      "left": {
+        "label": "Take what he found",
+        "outcome": {
+          "text": "He produces a small note, folded in four. The ink is smeared with damp, but ye can make out four words: 'Come at midnight. A.B.' The handwriting is fine. Educated. Feminine.",
+          "grant_clues": ["clue_note_in_close"],
+          "set_flags": ["begg_second_visit"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Reprimand him for withholding evidence",
+        "outcome": {
+          "text": "'Bring it to the station by this evening, Begg. Every detail matters.' He nods miserably. Ye make a note — the constable is eager but green.",
+          "set_flags": ["begg_second_visit"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_agnes_note_confrontation",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["begg_second_visit", "met_agnes"],
+        "excludes_flags": ["confronted_agnes_with_note"]
+      },
+      "weight": 5,
+      "sprite": "lady",
+      "character": "agnes_brodie",
+      "narrative": "Ye return to Heriot Row with the note from the close. Mrs Brodie is seated by the window, embroidering. She does not rise when ye enter.",
+      "left": {
+        "label": "Show her the note",
+        "outcome": {
+          "text": "She looks at it for a long time. 'Where did ye find that?' she asks, very quietly. 'In the close,' ye say. She sets down her embroidery. 'I wrote it,' she says. 'I will not pretend otherwise. But ye don't understand. He was going to ruin us both.' A long pause. 'I wanted to talk to him. That is all.' Her hands do not shake.",
+          "set_flags": ["confronted_agnes_with_note", "has_witness_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Pocket the note and say nothing",
+        "outcome": {
+          "text": "Ye watch her face for a reaction, give nothing away. She watches ye back with those violet eyes. The silence in the room is the kind that has answers in it, if ye know how to listen.",
+          "set_flags": ["confronted_agnes_with_note"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_tam_second_visit",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["asked_about_murder_night"],
+        "excludes_flags": ["tam_second_visit"]
+      },
+      "weight": 2,
+      "sprite": "barkeep",
+      "character": "tam_the_barkeep",
+      "narrative": "Ye return to the White Hart. Tam is less cautious than before — ye've earned a degree of trust, or he's had a dram himself. 'I remembered something,' he says, lowering his voice.",
+      "left": {
+        "label": "Listen",
+        "outcome": {
+          "text": "'There was a delivery boy came in, asking if anyone knew where to find Brodie. Said he had a message for him. I directed him to the close — Brodie had mentioned he'd be meeting someone there.' Tam shrugs. 'The boy was just a boy. But the message came from a lady. That's what he said.'",
+          "grant_clues": ["clue_message_to_brodie"],
+          "set_flags": ["tam_second_visit"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Dismiss it as gossip",
+        "outcome": {
+          "text": "'Suit yersel, Inspector.' Tam goes back to his polishing. Some information only comes once.",
+          "set_flags": ["tam_second_visit"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_fergusson_nervous",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["visited_fergusson"],
+        "excludes_flags": ["fergusson_pressed"]
+      },
+      "weight": 2,
+      "sprite": "doctor",
+      "character": "dr_fergusson",
+      "narrative": "Ye find Dr Fergusson in a sorry state — his hands are unsteady and his consulting room smells of brandy. He startles when he hears yer knock. 'McLevy — I've been thinking. I need to tell ye something.'",
+      "left": {
+        "label": "Let him speak",
+        "outcome": {
+          "text": "'I saw Mrs Brodie on the night of the murder. Not in the New Town — in the Cowgate. She came to my rooms around ten o'clock, asking for more laudanum. Said her nerves were badly. I gave her a small bottle. I should not have.' He puts his head in his hands. 'I didnae ask why she needed it.'",
+          "grant_clues": ["clue_fergusson_confession"],
+          "set_flags": ["fergusson_pressed", "has_pharmacy_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Ask why he waited to come forward",
+        "outcome": {
+          "text": "'Because I was afraid,' he says simply. 'I have known Agnes Brodie for twenty years. I could not believe... I still cannot.' He will not say more without further pressing.",
+          "set_flags": ["fergusson_pressed"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_rain_on_cobbles",
+      "type": "always",
+      "weight": 1,
+      "sprite": "close",
+      "narrative": "The rain comes down in earnest — the kind of Edinburgh rain that has opinions. The wynds run with grey water. Folk duck into doorways. The city retreats behind glass and curtain.",
+      "left": {
+        "label": "Keep working — rain willnae melt ye",
+        "outcome": {
+          "text": "Yer coat is soaked through within minutes. The cobbles gleam like black mirrors. Somewhere a fiddle plays behind a steamed-up window. Ye press on.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Take shelter and review yer notes",
+        "outcome": {
+          "text": "Ye duck under a doorway as the rain hammers the wynd. Yer thoughts circle the close — the body, the glass, the unanswered questions. But the threads won't weave together yet. Ye need more. Back to work.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_royal_mile_crowd",
+      "type": "always",
+      "weight": 1,
+      "sprite": "street",
+      "narrative": "The High Street is thronged with the lunchtime crowd — clerks, lawyers, fishwives, a minister in full black. Ye catch a fragment of conversation: someone is already talking about the Brodie murder.",
+      "left": {
+        "label": "Follow the gossip",
+        "outcome": {
+          "text": "The version circulating in the crowd has Brodie stabbed by a footpad, robbed in the close, pushed down the stairs. None of this is true, which means somebody has been putting stories about. Someone wants the facts confused.",
+          "set_flags": ["rumours_spreading"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Ignore the chatter",
+        "outcome": {
+          "text": "Rumours travel faster than truth in Edinburgh. Ye push through the crowd and keep yer head down.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_agnes_composed",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_agnes"],
+        "excludes_flags": ["noted_agnes_composure"]
+      },
+      "weight": 2,
+      "sprite": "lady",
+      "character": "agnes_brodie",
+      "narrative": "A small detail nags at ye: Agnes Brodie has wept no tears. Not once, in either of yer meetings. Her husband of twelve years — found dead in a close — and those violet eyes have remained entirely dry.",
+      "left": {
+        "label": "Return and press her on this",
+        "outcome": {
+          "text": "'Some people do not show their grief in tears, Inspector,' she says, meeting yer gaze steadily. 'It is a question of character.' She pauses. 'My husband would have understood that.' It is perhaps the truest thing she has said.",
+          "set_flags": ["noted_agnes_composure"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Note it and move on",
+        "outcome": {
+          "text": "Not weeping is not evidence. But it is a fact. Ye file it away alongside the other facts that don't quite sit right.",
+          "set_flags": ["noted_agnes_composure"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_docks_lead",
+      "type": "always",
+      "one_shot": true,
+      "weight": 1,
+      "sprite": "docks",
+      "narrative": "An anonymous note has been left at the police station addressed to ye: 'Ask at Leith Docks about a trunk belonging to Mrs B.' It could be something. It could be a mischief-maker wasting yer time.",
+      "left": {
+        "label": "Go to Leith Docks",
+        "outcome": {
+          "text": "Ye spend two hours at the docks. Every dock-hand ye speak to shrugs. There is no trunk, no Mrs B, no record of anything unusual. It was a mischief-maker. Ye've lost the afternoon.",
+          "turn_cost": 3
+        }
+      },
+      "right": {
+        "label": "Ignore the note",
+        "outcome": {
+          "text": "Anonymous tips are a detective's curse. Ye crumple the note and return to the facts ye know. Not every line leads somewhere.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_mcnair_alibi_crack",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["confronted_mcnair"],
+        "excludes_flags": ["mcnair_alibi_checked"]
+      },
+      "weight": 2,
+      "sprite": "urchin",
+      "character": "rab_mcnair",
+      "narrative": "Tam the barkeep sends word: Rab McNair was at the White Hart, aye, but he slipped out for an hour around eleven. Tam thought nothing of it at the time. He thinks something of it now.",
+      "left": {
+        "label": "Find McNair and confront him",
+        "outcome": {
+          "text": "'Aye, I went out! But not to kill Brodie — I went to the Tron, to try my luck at cards. Ask Angus the dealer, he'll tell ye.' Angus the dealer confirms it reluctantly. McNair's hour is accounted for. He is not the killer.",
+          "set_flags": ["mcnair_alibi_checked"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "File it away — his motive is too weak",
+        "outcome": {
+          "text": "A knife man doesn't use laudanum. McNair is a dead end — albeit a noisy one. Ye mark him off yer mental list.",
+          "set_flags": ["mcnair_alibi_checked"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_newspaper_office",
+      "type": "always",
+      "one_shot": true,
+      "weight": 1,
+      "sprite": "newspaper",
+      "narrative": "The Scotsman has already published a brief notice: 'W. Brodie, Esq., cloth merchant, found deceased in Mary King's Close. Foul play suspected.' The editor wants to know if there have been arrests.",
+      "left": {
+        "label": "Give a brief statement",
+        "outcome": {
+          "text": "'Enquiries are ongoing.' The editor writes it down. As ye leave, a reporter falls into step beside ye: 'Inspector — is it true that Mrs Brodie stands to inherit five hundred pounds?' Someone has been talking.",
+          "set_flags": ["press_knows_insurance"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Say nothing to the press",
+        "outcome": {
+          "text": "Ye keep walking. The press are the last people in Edinburgh a detective should trust with a half-formed theory.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_violet_embroidery",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["examined_body", "met_agnes"],
+        "excludes_flags": ["violet_thread_noted"]
+      },
+      "weight": 3,
+      "sprite": "handkerchief",
+      "narrative": "Ye hold the monogrammed handkerchief up to the window. The violet thread is exceptional — not just the initials, but the quality of the embroidery. And in Mrs Brodie's parlour, ye recall, there was an embroidery hoop on the table.",
+      "left": {
+        "label": "Return to confirm the embroidery",
+        "outcome": {
+          "text": "Under the pretence of another question, ye examine the hoop in Mrs Brodie's parlour. The thread on the spool is violet — an exact match. She does not notice ye looking. Or she pretends not to.",
+          "grant_clues": ["clue_embroidery_match"],
+          "set_flags": ["violet_thread_noted"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Note it, but initials alone are not enough",
+        "outcome": {
+          "text": "A.B. — Agnes Brodie. Aye. But A.B. could also be Arthur Bell, or Annie Blackwood, or a dozen others. Circumstantial. Keep it in mind.",
+          "set_flags": ["violet_thread_noted"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_shaw_second_meeting",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["has_business_dispute", "read_brodie_will"],
+        "excludes_flags": ["shaw_told_about_trouble"]
+      },
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "duncan_shaw",
+      "narrative": "Duncan Shaw receives ye again, this time more subdued. 'I've been thinking, Inspector. About what Brodie may have told his wife about the business.' He pours himself a brandy without offering ye one.",
+      "left": {
+        "label": "Ask what he means",
+        "outcome": {
+          "text": "'The business was in trouble. More than I let on. Brodie knew it. If Agnes found out the inheritance might be worthless — well. That would change her calculations considerably, would it not?' He stares into his glass. 'I am not saying she did it. I am saying she might have had reason to act quickly.'",
+          "grant_clues": ["clue_business_in_trouble"],
+          "set_flags": ["shaw_told_about_trouble"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "He is deflecting — focus on the facts",
+        "outcome": {
+          "text": "Shaw is trying to point ye at his dead partner's wife to keep yer attention off himself. Ye've seen it before. But that doesn't mean he is wrong.",
+          "set_flags": ["shaw_told_about_trouble"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_night_watchman",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["spoke_to_watchman"]
+      },
+      "weight": 2,
+      "sprite": "candle",
+      "narrative": "Old Tam the nightwatchman — not the barkeep, a different Tam, as is traditional in Edinburgh — is found sleeping in a doorway on the Canongate. He was first on the scene. He has not yet been properly questioned.",
+      "left": {
+        "label": "Wake him and question him",
+        "outcome": {
+          "text": "'Aye, I found him. Stone dead, poor soul, and the glass beside him. But here's the thing — when I came past on my first round at ten o'clock, the close was empty. When I came back at half past midnight, there he was. And around half eleven I heard a woman's voice once. Just once.'",
+          "grant_clues": ["clue_watchman_testimony"],
+          "set_flags": ["spoke_to_watchman"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "He was sleeping — testimony may be unreliable",
+        "outcome": {
+          "text": "A sleeping watchman makes a poor witness. Ye note his address and move on — perhaps later.",
+          "set_flags": ["spoke_to_watchman"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_fog_deduction",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["has_business_dispute"],
+        "excludes_flags": ["clue_business_in_trouble"]
+      },
+      "weight": 3,
+      "sprite": "close",
+      "narrative": "The haar thickens over the High Street. Yer feet carry ye through the fog as yer mind turns over what Shaw told ye — the dispute, the debts, the quiet ruin beneath the respectable face of Brodie & Shaw.",
+      "left": {
+        "label": "Press on",
+        "outcome": {
+          "text": "There will be time to think later. Right now, ye need facts.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Let it crystallise",
+        "outcome": {
+          "text": "If the business was failing — truly failing — then Brodie's estate was worth less than it appeared. Land, furniture, goodwill: all eaten by debt. But the insurance policy is different. Five hundred pounds, clean and clear, payable on death. For a woman who knows the books are rotten, that policy would be the only real money left. The motive takes shape in the fog.",
+          "grant_clues": ["clue_business_in_trouble"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_bells_deduction",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["met_agnes"],
+        "excludes_flags": ["clue_mourning_ribbon"]
+      },
+      "weight": 3,
+      "sprite": "street",
+      "narrative": "St Giles' bells mark the hour. The sound carries ye back to Heriot Row — to Agnes Brodie, pale and steady, in that perfectly fitted black dress. Not a crease. Not a stitch out of place.",
+      "left": {
+        "label": "Keep moving",
+        "outcome": {
+          "text": "The case will not solve itself while ye stand listening to bells.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Sit and think on it",
+        "outcome": {
+          "text": "A widow's mourning dress is not pulled from a drawer. It must be commissioned, measured, sewn — or bought ready-made from a mercer who keeps stock. Either way, it takes days. Agnes Brodie was dressed for widowhood before her husband was dead. Ye make a note to ask in the Grassmarket.",
+          "grant_clues": ["clue_mourning_ribbon"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_rain_deduction",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["examined_body", "visited_brodie_house"],
+        "excludes_flags": ["clue_note_in_close"]
+      },
+      "weight": 3,
+      "sprite": "close",
+      "narrative": "The rain hammers the wynd. Ye take shelter under a doorway and let yer mind work. The handkerchief. The close. The whisky glass brought from home. None of this was chance.",
+      "left": {
+        "label": "Press on through the rain",
+        "outcome": {
+          "text": "Ye pull yer coat tighter and step back out into it.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Follow the thread",
+        "outcome": {
+          "text": "Brodie was not dragged to that close. He went willingly, at night, leaving behind his theatre ticket. Someone sent him word — someone he trusted enough to follow into the dark. The handkerchief bore the initials A.B. in violet thread. Agnes Brodie. He was lured there by his own wife, and he walked into the close not knowing it would be his last step.",
+          "grant_clues": ["clue_note_in_close"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_closing_in",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["has_pharmacy_evidence", "has_insurance_evidence"],
+        "excludes_flags": ["ready_to_accuse"]
+      },
+      "weight": 4,
+      "sprite": "detective",
+      "narrative": "Ye stand at the window of the police station as dusk gathers over the Old Town. The evidence is laid out before ye on the table. The pattern is clear. Ye know what happened in that close. Ye know who did it.",
+      "left": {
+        "label": "Aye — I know enough",
+        "outcome": {
+          "text": "Clear as morning light on the New Town. The evidence points one way, and one way only. The time for gathering is almost done — and when ye are ready to act, Inspector, act.",
+          "set_flags": ["ready_to_accuse"],
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "One more piece of proof",
+        "outcome": {
+          "text": "One more thread. The case must be watertight before ye bring it to the Fiscal.",
+          "turn_cost": 1
+        }
+      }
+    }
+  ],
+
+  "endings": {
+    "win": {
+      "title": "Case Closed",
+      "text": "Ye lay out the evidence before the Procurator Fiscal in his chambers on the High Street. The laudanum purchase. The pharmacy ledger. The insurance policy maturing within the fortnight. The witness who saw a cloaked woman leaving the close at midnight.\n\nMrs Agnes Brodie is brought in. She sits very straight, her hands folded in her lap. She does not weep.\n\n'The laudanum was in his whisky,' ye say. 'Ye purchased it yerself, two days before. Ye knew about the insurance — five hundred pounds, enough to start a new life. Ye lured him to the close with a changed plan for the evening, and ye brought him his last drink.'\n\nShe looks at ye for a long moment. Then, quietly: 'He was a small man, Inspector. With small ambitions. I wanted more.'\n\nAnother case closed in the ledger of James McLevy, Detective Inspector, Edinburgh City Police.\n\nThe fog lifts over Auld Reekie. For tonight, at least, justice has been done.",
+      "sprite": "detective"
+    },
+    "wrong_accusation": {
+      "title": "A Grave Error",
+      "text": "The Procurator Fiscal examines yer evidence and shakes his head slowly.\n\n'This willnae hold, McLevy. Not enough. Not nearly enough. Ye've the wrong person, the wrong motive, or both. I cannae take this to court.'\n\nYe stand in the cold corridor of the Sheriff Court, watching the real killer walk free. Somewhere in Edinburgh, someone is breathing easier tonight.\n\nThe case remains open. The ledger stays unbalanced.\n\nPerhaps next time, Inspector.",
+      "sprite": "detective"
+    },
+    "time_up": {
+      "title": "The Trail Goes Cold",
+      "text": "Night falls over Auld Reekie. The fog rolls in from the Firth of Forth, thick as wool, and with it goes yer last chance.\n\nThe witnesses scatter to their homes and their secrets. The evidence degrades — the glass is washed, the ledger page is torn, the memories grow hazy. The killer slips into the dark labyrinth of the Old Town, just another shadow among the thousands.\n\nYe stand alone in Mary King's Close, the gas lamp guttering above ye. The body has been taken away. The cobbles are wet. There is nothing left here but the cold.\n\nSome cases stay open forever.\n\nBetter luck next time, Inspector.",
+      "sprite": "close"
+    }
+  },
+
+  "briefing": {
+    "title": "The Body in the Close",
+    "text": "October 1855. Edinburgh.\n\nA prosperous cloth merchant, Mr William Brodie, has been found dead in Mary King's Close — one of the Old Town's most notorious underground passages. There are no visible wounds. The city constabulary suspects foul play.\n\nAs Detective Inspector James McLevy, ye must investigate the scene, question witnesses, and gather enough evidence to identify the killer before nightfall.\n\nThe streets of Auld Reekie hold many secrets. Not everyone will tell ye the truth. Not every clue will lead somewhere useful. And the clock is always ticking.\n\nWhen ye think ye know whodunnit, make yer accusation. But be warned — ye only get one chance.",
+    "objectives": [
+      "Discover who killed William Brodie",
+      "Determine the motive for the murder",
+      "Identify the method used to kill him"
+    ]
+  }
+}

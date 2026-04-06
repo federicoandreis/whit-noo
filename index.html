@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Whit Noo? — A swipe-based whodunnit card game set in Victorian Edinburgh.">
+  <meta name="theme-color" content="#0D0D0D">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Whit Noo?">
+  <meta property="og:description" content="Mysteries of Auld Reekie — a swipe-card whodunnit set in Victorian Edinburgh.">
+  <meta property="og:type" content="website">
+
+  <title>Whit Noo? — Mysteries of Auld Reekie</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/ui.css">
+  <link rel="stylesheet" href="css/atmosphere.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN MENU SCREEN
+  ═══════════════════════════════════════════════ -->
+  <main id="screen-menu" class="screen screen--active" role="main">
+    <header class="menu__header">
+      <h1 class="menu__title">WHIT NOO?</h1>
+      <p class="menu__subtitle">Mysteries of Auld Reekie</p>
+    </header>
+
+    <div class="menu__divider"></div>
+
+    <section class="menu__chapters" aria-labelledby="chapter-select-heading">
+      <h2 class="menu__section-title" id="chapter-select-heading">Choose a Mystery</h2>
+      <div id="chapter-list" role="list">
+        <!-- Populated by renderChapterList() -->
+        <p style="font-family:var(--font-serif);color:var(--text-muted);text-align:center;padding:2rem 0;">
+          Loading chapters…
+        </p>
+      </div>
+    </section>
+
+    <footer class="menu__footer" aria-label="External links">
+      <div class="menu__links">
+        <button
+          class="menu-link"
+          id="menu-sound-toggle"
+          aria-pressed="true"
+          aria-label="Toggle sound on or off"
+        >
+          <span id="menu-sound-icon">♪</span> Sound: <span id="menu-sound-state">On</span>
+        </button>
+        <a
+          href="https://github.com/federicoandreis/whit-noo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="menu-link"
+          aria-label="View the source code on GitHub (opens in new tab)"
+        >
+          ⟨/⟩ View the Code
+        </a>
+        <a
+          href="https://buymeacoffee.com/stats_fede"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="menu-link"
+          aria-label="Support the project on Buy Me a Coffee (opens in new tab)"
+        >
+          ☕ Buy Me a Coffee
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       BRIEFING SCREEN
+  ═══════════════════════════════════════════════ -->
+  <section id="screen-briefing" class="screen" aria-labelledby="briefing-title">
+    <div class="briefing__content">
+      <header class="briefing__header">
+        <h2 class="briefing__title" id="briefing-title"><!-- Populated by renderBriefing() --></h2>
+      </header>
+
+      <p class="briefing__text" id="briefing-text"><!-- Populated by renderBriefing() --></p>
+
+      <div class="briefing__objectives" aria-label="Objectives">
+        <h3 class="briefing__objectives-title">Objectives</h3>
+        <ul id="briefing-objectives">
+          <!-- Populated by renderBriefing() -->
+        </ul>
+      </div>
+
+      <div class="briefing__actions">
+        <button class="btn btn--primary" id="btn-begin">Begin Investigation</button>
+        <button class="btn btn--ghost" id="btn-back-to-menu">← Return to Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       GAME SCREEN
+  ═══════════════════════════════════════════════ -->
+  <section id="screen-game" class="screen" aria-label="Game">
+
+    <!-- Top bar -->
+    <nav class="game__topbar" aria-label="Game controls">
+      <div class="topbar__left">
+        <button
+          class="btn--icon"
+          id="btn-menu"
+          aria-label="Open menu"
+          aria-haspopup="dialog"
+        >☰</button>
+      </div>
+      <div class="topbar__centre">
+        <span class="topbar__title">WHIT NOO?</span>
+        <span class="topbar__clock" id="clock-display" aria-live="polite" aria-label="Turns remaining">
+          ⏱ —/—
+        </span>
+      </div>
+      <div class="topbar__right">
+        <button
+          class="btn--icon"
+          id="btn-help"
+          aria-label="How to play"
+          aria-haspopup="dialog"
+        >?</button>
+      </div>
+    </nav>
+
+    <!-- Game area -->
+    <div class="game__main" role="region" aria-label="Investigation">
+      <!-- Fog decorative element -->
+      <div class="game__fog" aria-hidden="true"></div>
+
+      <!-- Card slot — card is injected here by main.js -->
+      <div id="card-slot" aria-live="polite" aria-label="Current encounter"></div>
+
+      <!-- Outcome panel — shown after each swipe -->
+      <div
+        id="outcome-panel"
+        role="region"
+        aria-live="assertive"
+        aria-label="Outcome"
+      ></div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="game__bottombar" role="navigation" aria-label="Actions">
+      <button
+        class="bottombar__btn"
+        id="btn-clues"
+        aria-haspopup="dialog"
+        aria-label="Open clue panel"
+      >
+        🔍 <span id="clue-count">Clues (0)</span>
+      </button>
+      <button
+        class="bottombar__btn bottombar__btn--accuse"
+        id="btn-accuse"
+        aria-haspopup="dialog"
+        aria-label="Make accusation"
+      >
+        ⚖ Accuse
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ENDING SCREEN
+  ═══════════════════════════════════════════════ -->
+  <section id="screen-ending" class="screen" aria-labelledby="ending-title">
+    <div class="ending__content">
+      <div id="ending-portrait" aria-hidden="true"></div>
+      <h2 class="ending__title" id="ending-title"><!-- Populated --></h2>
+      <p class="ending__text" id="ending-text"><!-- Populated --></p>
+      <div class="ending__actions">
+        <button class="btn btn--primary" id="btn-play-again">Play Again</button>
+        <button class="btn btn--secondary" id="btn-menu-from-ending">Return to Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       OVERLAY: CLUE PANEL
+  ═══════════════════════════════════════════════ -->
+  <dialog id="overlay-clues" aria-labelledby="overlay-clues-title">
+    <div class="overlay overlay--slide">
+      <header class="overlay__header">
+        <h2 class="overlay__title" id="overlay-clues-title">🔍 Evidence</h2>
+        <button class="overlay__close" id="close-clues" aria-label="Close clue panel">Close</button>
+      </header>
+      <div class="overlay__body" id="overlay-clues-body">
+        <!-- Populated by renderCluePanel() -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ═══════════════════════════════════════════════
+       OVERLAY: ACCUSATION
+  ═══════════════════════════════════════════════ -->
+  <dialog id="overlay-accusation" aria-labelledby="overlay-accusation-title">
+    <div class="overlay overlay--slide">
+      <header class="overlay__header">
+        <h2 class="overlay__title" id="overlay-accusation-title">⚖ Make Yer Accusation</h2>
+        <button class="overlay__close" id="close-accusation" aria-label="Close accusation panel">Close</button>
+      </header>
+      <div class="overlay__body" id="overlay-accusation-body">
+        <!-- Populated by renderAccusationScreen() -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ═══════════════════════════════════════════════
+       OVERLAY: HELP
+  ═══════════════════════════════════════════════ -->
+  <dialog id="overlay-help" aria-labelledby="overlay-help-title">
+    <div class="overlay">
+      <header class="overlay__header">
+        <h2 class="overlay__title" id="overlay-help-title">? How to Play</h2>
+        <button class="overlay__close" id="close-help" aria-label="Close help">Close</button>
+      </header>
+      <div class="overlay__body" id="overlay-help-body">
+        <!-- Populated by renderHelp() in ui.js -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ═══════════════════════════════════════════════
+       OVERLAY: HAMBURGER MENU
+  ═══════════════════════════════════════════════ -->
+  <dialog id="overlay-hamburger" aria-labelledby="overlay-hamburger-title">
+    <div class="overlay overlay--slide">
+      <header class="overlay__header">
+        <h2 class="overlay__title" id="overlay-hamburger-title">Menu</h2>
+        <button class="overlay__close" id="close-hamburger" aria-label="Close menu">Close</button>
+      </header>
+      <nav class="hamburger-menu" aria-label="Game menu">
+        <button class="hamburger-menu__item" id="ham-menu">
+          <span class="hamburger-menu__icon" aria-hidden="true">⌂</span>
+          Return to Main Menu
+        </button>
+        <button class="hamburger-menu__item" id="ham-restart">
+          <span class="hamburger-menu__icon" aria-hidden="true">↺</span>
+          Restart Chapter
+        </button>
+        <button class="hamburger-menu__item" id="ham-help">
+          <span class="hamburger-menu__icon" aria-hidden="true">?</span>
+          How to Play
+        </button>
+        <button class="hamburger-menu__item" id="ham-sound" aria-pressed="true">
+          <span class="hamburger-menu__icon" aria-hidden="true" id="ham-sound-icon">♪</span>
+          <span id="ham-sound-label">Sound: On</span>
+        </button>
+        <a
+          href="https://github.com/federicoandreis/whit-noo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hamburger-menu__item"
+          aria-label="View source code on GitHub (opens in new tab)"
+        >
+          <span class="hamburger-menu__icon" aria-hidden="true">⟨/⟩</span>
+          View the Code
+        </a>
+        <a
+          href="https://buymeacoffee.com/stats_fede"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hamburger-menu__item"
+          aria-label="Support on Buy Me a Coffee (opens in new tab)"
+        >
+          <span class="hamburger-menu__icon" aria-hidden="true">☕</span>
+          Buy Me a Coffee
+        </a>
+      </nav>
+    </div>
+  </dialog>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST
+  ═══════════════════════════════════════════════ -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       ENTRY POINT
+  ═══════════════════════════════════════════════ -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

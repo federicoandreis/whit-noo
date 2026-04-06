@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "id": "your-chapter-id",
+    "title": "Your Chapter Title",
+    "subtitle": "A subtitle",
+    "author": "Your Name",
+    "version": "1.0",
+    "description": "A one-sentence description of the mystery.",
+    "setting": "Edinburgh, Year",
+    "difficulty": "standard",
+    "max_turns": 30,
+    "estimated_minutes": 12,
+    "credits": ""
+  },
+
+  "characters": [
+    {
+      "id": "detective",
+      "name": "Inspector McLevy",
+      "description": "Edinburgh's tenacious detective.",
+      "sprite": "detective",
+      "is_suspect": false
+    },
+    {
+      "id": "suspect_one",
+      "name": "The Suspect",
+      "description": "Description of the suspect.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    }
+  ],
+
+  "solution": {
+    "suspect": "suspect_one",
+    "motive": "clue_the_motive_clue_id",
+    "method": "clue_the_method_clue_id"
+  },
+
+  "clues": [
+    {
+      "id": "clue_the_motive_clue_id",
+      "name": "Clue Name",
+      "description": "Brief description shown in the clue list.",
+      "detail": "Full detail text shown when the clue is tapped/expanded.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_red_herring",
+      "name": "Red Herring",
+      "description": "This seems important but isn't.",
+      "detail": "Full detail — reveals the red herring nature eventually.",
+      "sprite": "document",
+      "is_red_herring": true
+    }
+  ],
+
+  "cards": [
+    {
+      "id": "card_opening",
+      "type": "sequence",
+      "sequence_position": 0,
+      "sprite": "close",
+      "narrative": "The opening scene. Set the atmosphere. 2-3 sentences.",
+      "left": {
+        "label": "Short left choice label",
+        "outcome": {
+          "text": "Result of choosing left. 1-2 sentences.",
+          "grant_clues": ["clue_the_motive_clue_id"],
+          "set_flags": ["examined_scene"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Short right choice label",
+        "outcome": {
+          "text": "Result of choosing right. 1-2 sentences.",
+          "set_flags": ["questioned_witness"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_always_example",
+      "type": "always",
+      "weight": 2,
+      "sprite": "urchin",
+      "one_shot": true,
+      "narrative": "An always-available encounter. Appears until seen.",
+      "left": {
+        "label": "Pay for information",
+        "outcome": {
+          "text": "The witness reveals something useful.",
+          "grant_clues": [],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Decline",
+        "outcome": {
+          "text": "The opportunity passes.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_conditional_example",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["examined_scene"],
+        "excludes_flags": ["already_visited"]
+      },
+      "weight": 3,
+      "sprite": "detective",
+      "narrative": "Only appears after the player has examined the scene.",
+      "left": {
+        "label": "Investigate further",
+        "outcome": {
+          "text": "Further investigation reveals a clue.",
+          "grant_clues": [],
+          "set_flags": ["already_visited"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Move on",
+        "outcome": {
+          "text": "Ye decide to focus elsewhere for now.",
+          "set_flags": ["already_visited"],
+          "turn_cost": 1
+        }
+      }
+    }
+  ],
+
+  "endings": {
+    "win": {
+      "title": "Case Closed",
+      "text": "The win ending text. Can be multiple paragraphs separated by \\n\\n.",
+      "sprite": "detective"
+    },
+    "wrong_accusation": {
+      "title": "A Grave Error",
+      "text": "The wrong accusation ending. The real culprit escapes.",
+      "sprite": "detective"
+    },
+    "time_up": {
+      "title": "The Trail Goes Cold",
+      "text": "The time-up ending. The investigation runs out of time.",
+      "sprite": "close"
+    }
+  },
+
+  "briefing": {
+    "title": "Chapter Title",
+    "text": "The briefing text shown before play begins. Set the scene and hook the player.\n\nCan be multiple paragraphs.",
+    "objectives": [
+      "First objective",
+      "Second objective",
+      "Third objective"
+    ]
+  }
+}
