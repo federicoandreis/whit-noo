@@ -56,10 +56,11 @@ async function init() {
 // ─── Audio helpers ────────────────────────────────────────────────────────────
 
 function _ensureAudio() {
-  if (!_audioReady) {
-    initAudio();
-    _audioReady = true;
-  }
+  // Always call initAudio() from each gesture — on iOS Safari the synchronous
+  // ctx.resume() inside initAudio() is what actually unlocks the AudioContext.
+  // The _audioReady guard is kept only to skip re-loading saved preferences.
+  initAudio();
+  _audioReady = true;
 }
 
 function _playEndingSound(endingType) {

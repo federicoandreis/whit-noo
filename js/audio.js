@@ -27,25 +27,32 @@ let _enabled         = true;
 
 /**
  * Creates the AudioContext.  Must be called inside a user-gesture handler.
- * Safe to call multiple times.
+ * Safe to call multiple times — re-calling from a new gesture will attempt
+ * a synchronous resume, which is required on iOS Safari.
  */
 export function initAudio() {
-  if (ctx) return;
+  // Restore saved preference on first call
+  if (!ctx) {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved !== null) _enabled = saved === 'true';
+    } catch (_) { /* storage unavailable */ }
 
-  // Restore saved preference
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved !== null) _enabled = saved === 'true';
-  } catch (_) { /* storage unavailable */ }
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
 
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContext) return;
+    ctx = new AudioContext();
+    masterGain = ctx.createGain();
+    masterGain.gain.value = _enabled ? 1 : 0;
+    masterGain.connect(ctx.destination);
+  }
 
-  ctx = new AudioContext();
-
-  masterGain = ctx.createGain();
-  masterGain.gain.value = _enabled ? 1 : 0;
-  masterGain.connect(ctx.destination);
+  // Always attempt a synchronous resume when called from a user gesture.
+  // On iOS Safari, ctx.resume() is only honoured if called synchronously
+  // within the event handler — not inside a .then() callback.
+  if (ctx.state === 'suspended') {
+    ctx.resume().catch(() => {/* ignore */});
+  }
 }
 
 // ─── Enable / disable ────────────────────────────────────────────────────────
@@ -96,6 +103,9 @@ function makeGain(value = 1) {
 
 export function startAmbient() {
   if (!ctx || !_enabled) return;
+  // Synchronous resume attempt — iOS Safari requires this to be called
+  // in the synchronous part of a user-gesture handler, not only in .then()
+  if (ctx.state === 'suspended') ctx.resume().catch(() => {/* ignore */});
   // Cancel any in-flight fade-out
   clearTimeout(_stopTimeoutId);
   _stopTimeoutId = null;
