@@ -1,0 +1,794 @@
+{
+  "meta": {
+    "id": "the-leith-smuggler",
+    "title": "The Leith Smuggler",
+    "subtitle": "A Port Mystery",
+    "author": "Cascade AI",
+    "version": "1.0",
+    "description": "A customs officer is found murdered at Leith docks. The cargo he was inspecting has vanished into the Edinburgh night.",
+    "setting": "Edinburgh & Leith, March 1857",
+    "difficulty": "standard",
+    "max_turns": 32,
+    "estimated_minutes": 12,
+    "credits": "Inspired by James McLevy's extensive work investigating smuggling operations and dock crimes in Leith."
+  },
+
+  "characters": [
+    {
+      "id": "mclevy",
+      "name": "Inspector McLevy",
+      "description": "Edinburgh's tenacious detective. Irish-born, sharp-eyed, knows the docks well.",
+      "sprite": "detective",
+      "is_suspect": false
+    },
+    {
+      "id": "william_grant",
+      "name": "William Grant",
+      "description": "The murdered customs officer. Known for his incorruptible nature and thorough inspections.",
+      "sprite": "gentleman",
+      "is_suspect": false
+    },
+    {
+      "id": "captain_mackay",
+      "name": "Captain Robert MacKay",
+      "description": "Captain of the merchant ship 'Edinburgh Rose'. Gruff and defensive about his cargo.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    },
+    {
+      "id": "agnes_grant",
+      "name": "Agnes Grant",
+      "description": "The victim's sister. Works as a seamstress in the Old Town.",
+      "sprite": "lady",
+      "is_suspect": false
+    },
+    {
+      "id": "thomas_shaw",
+      "name": "Thomas Shaw",
+      "description": "Warehouse foreman at Leith docks. Has worked there for twenty years.",
+      "sprite": "constable",
+      "is_suspect": true
+    },
+    {
+      "id": "mr_davidson",
+      "name": "Mr. James Davidson",
+      "description": "Wealthy merchant and ship owner. Grant was inspecting his latest shipment.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    },
+    {
+      "id": "jenny_mcdonald",
+      "name": "Jenny McDonald",
+      "description": "Tavern keeper at The Ship Inn. Sees everything that happens at the docks.",
+      "sprite": "lady",
+      "is_suspect": false
+    },
+    {
+      "id": "constable_ross",
+      "name": "Constable Ross",
+      "description": "Local constable who found the body. Young and eager to help.",
+      "sprite": "constable",
+      "is_suspect": false
+    }
+  ],
+
+  "solution": {
+    "suspect": "thomas_shaw",
+    "motive": "clue_bribery_payments",
+    "method": "clue_cargo_hook"
+  },
+
+  "clues": [
+    {
+      "id": "clue_cargo_hook",
+      "name": "Bloodied Cargo Hook",
+      "description": "A heavy iron cargo hook found near the body, covered in blood.",
+      "detail": "The murder weapon - a cargo hook used for moving heavy crates. The blood matches the victim's. Only dock workers would know how to wield such a tool effectively as a weapon.",
+      "sprite": "key",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_bribery_payments",
+      "name": "Ledger of Payments",
+      "description": "A hidden ledger showing regular payments to someone at the customs house.",
+      "detail": "Found in Shaw's office: a ledger recording monthly payments of £50 to 'W.G.' - William Grant's initials. But the handwriting doesn't match Shaw's usual records. Someone was bribing Grant, or trying to make it look that way.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_missing_cargo",
+      "name": "Missing French Brandy",
+      "description": "The ship's manifest lists 50 casks of French brandy, but only 30 remain.",
+      "detail": "Twenty casks of expensive French brandy have vanished from the Edinburgh Rose's hold. Grant was inspecting this very cargo when he was killed. The missing brandy is worth over £200.",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_shaw_debts",
+      "name": "Shaw's Gambling Debts",
+      "description": "Thomas Shaw owes substantial sums to several Edinburgh gambling houses.",
+      "detail": "Shaw has debts totaling £300 across three gambling establishments. His wages as foreman couldn't possibly cover these debts. He needed money desperately - and twenty casks of brandy would fetch a good price.",
+      "sprite": "coin",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_warehouse_key",
+      "name": "Duplicate Warehouse Key",
+      "description": "A second key to the bonded warehouse found in Shaw's possession.",
+      "detail": "Shaw had a duplicate key to the bonded warehouse where the brandy was stored. Only customs officers and the foreman should have keys. This key shows signs of recent use.",
+      "sprite": "key",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_time_of_death",
+      "name": "Time of Death",
+      "description": "Grant was killed between 10 PM and midnight on March 15th.",
+      "detail": "The body was found at dawn, but rigor mortis and body temperature suggest death occurred late the previous night, when the docks were quiet and most workers had gone home.",
+      "sprite": "watch",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_captain_alibi",
+      "name": "Captain's Alibi",
+      "description": "Captain MacKay was drinking at The Ship Inn during the murder.",
+      "detail": "Jenny McDonald confirms Captain MacKay was in her tavern from 9 PM until well past midnight, drinking with his crew. At least a dozen witnesses place him there during the time of the murder.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_davidson_threat",
+      "name": "Davidson's Recorded Threat",
+      "description": "A witness heard Davidson threaten Grant over delayed shipments.",
+      "detail": "A dock worker reports hearing Davidson tell Grant: 'Your meddling is costing me a fortune. One day you'll regret being so thorough.' This was three days before the murder.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_grant_investigation",
+      "name": "Grant's Private Notes",
+      "description": "Grant's personal notebook shows he suspected smuggling at the docks.",
+      "detail": "Found in Grant's lodgings: detailed notes about suspicious cargo movements, ships arriving at odd hours, and discrepancies in manifests. He was building a case against someone.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_shaw_boots",
+      "name": "Muddy Boots",
+      "description": "Shaw's boots match prints found near the murder scene.",
+      "detail": "Boot prints in the mud near Grant's body match Shaw's work boots exactly - distinctive wear pattern on the left heel. Shaw claims he wasn't at that part of the dock that night.",
+      "sprite": "footprint",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_brandy_sale",
+      "name": "Recent Brandy Sale",
+      "description": "A tavern keeper recently bought twenty casks of French brandy from an unknown seller.",
+      "detail": "A tavern in the Cowgate purchased twenty casks of French brandy two days after the murder - matching the missing cargo exactly. The seller was described as 'a dock worker, rough hands, nervous manner.'",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_shaw_confession_letter",
+      "name": "Unsent Letter",
+      "description": "A draft letter found in Shaw's desk, never sent.",
+      "detail": "Found crumpled in Shaw's office: 'I never meant for it to go this far. The debts were crushing me. When Grant discovered the missing brandy, I panicked. God forgive me.' The letter is unsigned and undated.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_agnes_inheritance",
+      "name": "Grant's Will",
+      "description": "William Grant left everything to his sister Agnes in his will.",
+      "detail": "Grant's modest savings of £150 go to his sister Agnes. The will was made six months ago. Agnes claims she didn't know about it.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_ship_schedule",
+      "name": "Ship's Schedule",
+      "description": "The Edinburgh Rose arrived two days late, citing bad weather.",
+      "detail": "The ship's log shows the Edinburgh Rose was delayed by storms in the North Sea. However, other ships on the same route arrived on time. Captain MacKay's explanation seems suspicious.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_witness_testimony",
+      "name": "Night Watchman's Account",
+      "description": "The night watchman saw someone near the warehouse around 11 PM.",
+      "detail": "The watchman reports seeing a figure matching Shaw's build near the bonded warehouse around 11 PM - right in the window of the murder. The figure was carrying something heavy.",
+      "sprite": "footprint",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_davidson_finances",
+      "name": "Davidson's Financial Records",
+      "description": "Davidson's business is struggling despite his wealthy appearance.",
+      "detail": "Davidson's shipping company is deeply in debt. He's been borrowing heavily to maintain appearances. A major cargo loss would ruin him completely.",
+      "sprite": "coin",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_smuggling_ring",
+      "name": "Evidence of Smuggling Network",
+      "description": "Grant's notes suggest an organized smuggling operation at Leith.",
+      "detail": "Grant had documented a pattern: certain ships, certain foremen, cargo that mysteriously shrinks between arrival and customs inspection. He was close to exposing a major smuggling ring.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_shaw_warehouse_access",
+      "name": "Warehouse Access Log",
+      "description": "Shaw accessed the bonded warehouse the night of the murder.",
+      "detail": "The warehouse log shows Shaw's key was used to unlock the bonded warehouse at 10:45 PM on March 15th - minutes before Grant was killed nearby. Shaw denies being there.",
+      "sprite": "key",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_blood_on_clothes",
+      "name": "Bloodstained Shirt",
+      "description": "A shirt with Grant's blood found hidden in Shaw's locker.",
+      "detail": "Hidden at the bottom of Shaw's work locker: a shirt with bloodstains matching Grant's blood type. Shaw claims he has no idea how it got there, suggesting someone is framing him.",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    }
+  ],
+
+  "cards": [
+    {
+      "id": "card_opening",
+      "type": "sequence",
+      "sequence_position": 0,
+      "sprite": "street",
+      "narrative": "The morning mist rolls off the Firth of Forth as ye arrive at Leith docks. Constable Ross waits by the customs house, his face pale. 'Inspector McLevy. It's William Grant, the customs officer. Found him at dawn, near the bonded warehouse.'",
+      "left": {
+        "label": "Examine the body",
+        "outcome": {
+          "text": "Grant lies face-down in the mud, his skull crushed. A cargo hook lies nearby, dark with blood. The man died doing his duty - inspecting cargo that someone didn't want inspected.",
+          "grant_clues": ["clue_cargo_hook", "clue_time_of_death"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Question Constable Ross",
+        "outcome": {
+          "text": "'I found him on my rounds at six this morning, Inspector. Cold as stone. The cargo he was inspecting... it's gone. Vanished into the night.' Ross hands ye Grant's inspection ledger, still clutched in the dead man's hand.",
+          "grant_clues": ["clue_missing_cargo"],
+          "set_flags": ["questioned_ross", "has_cargo_evidence"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_return_to_body",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_ross"],
+        "excludes_flags": ["examined_body"]
+      },
+      "weight": 5,
+      "sprite": "graveyard",
+      "narrative": "The body still lies where it fell. Ye should examine it properly before the undertaker arrives.",
+      "left": {
+        "label": "Examine the body now",
+        "outcome": {
+          "text": "Grant's skull shows a single, powerful blow from behind. The cargo hook is the weapon - heavy iron, wielded by someone strong. Someone who knew the docks.",
+          "grant_clues": ["clue_cargo_hook", "clue_time_of_death"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Focus on the living",
+        "outcome": {
+          "text": "The dead can wait. The killer walks among the living, and time is against ye.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_search_warehouse",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "interior",
+      "narrative": "The bonded warehouse looms before ye, its heavy doors secured with customs seals. This is where the missing cargo should be.",
+      "left": {
+        "label": "Inspect the warehouse",
+        "outcome": {
+          "text": "The manifest lists fifty casks of French brandy. Ye count only thirty. Twenty casks - worth over £200 - have vanished. And the warehouse log shows it was accessed at 10:45 PM last night.",
+          "grant_clues": ["clue_missing_cargo", "clue_shaw_warehouse_access"],
+          "set_flags": ["searched_warehouse", "has_cargo_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check the access log",
+        "outcome": {
+          "text": "The warehouse log is revealing. Thomas Shaw's key was used to unlock the door at 10:45 PM - right around the time of the murder. Interesting.",
+          "grant_clues": ["clue_shaw_warehouse_access"],
+          "set_flags": ["searched_warehouse"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_thomas_shaw",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "constable",
+      "character": "thomas_shaw",
+      "narrative": "Thomas Shaw, the warehouse foreman, is supervising the unloading of a ship. He's a big man, weathered by years on the docks. He looks nervous when he sees ye approach.",
+      "left": {
+        "label": "Ask about his whereabouts last night",
+        "outcome": {
+          "text": "'I was home, Inspector. With my wife. Left the docks at eight, like always.' His eyes don't meet yours. 'Terrible business about Grant. He was a good man. Thorough.'",
+          "set_flags": ["questioned_shaw", "met_shaw"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the missing brandy",
+        "outcome": {
+          "text": "Shaw's face pales. 'Missing brandy? I... I don't know anything about that, Inspector. The warehouse was locked. Only Grant and I have keys.' His hands tremble slightly.",
+          "grant_clues": ["clue_warehouse_key"],
+          "set_flags": ["questioned_shaw", "met_shaw"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_captain_mackay",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "captain_mackay",
+      "narrative": "Captain Robert MacKay stands on the deck of the Edinburgh Rose, barking orders at his crew. He's a hard man, face weathered by salt and wind.",
+      "left": {
+        "label": "Question him about the cargo",
+        "outcome": {
+          "text": "'Fifty casks of French brandy, all accounted for when we docked. If some are missing now, that's a customs matter, not mine.' He spits over the rail. 'Grant was always poking his nose where it wasn't wanted.'",
+          "grant_clues": ["clue_ship_schedule"],
+          "set_flags": ["questioned_mackay", "met_mackay"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about his whereabouts last night",
+        "outcome": {
+          "text": "'I was at The Ship Inn with my crew. Drinking until the wee hours. Ask Jenny McDonald - she'll tell ye. I was nowhere near that warehouse.'",
+          "grant_clues": ["clue_captain_alibi"],
+          "set_flags": ["questioned_mackay", "met_mackay"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_jenny_mcdonald",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_mackay"],
+        "excludes_flags": ["visited_jenny"]
+      },
+      "weight": 3,
+      "sprite": "lady",
+      "character": "jenny_mcdonald",
+      "narrative": "The Ship Inn is warm and smoky. Jenny McDonald, the keeper, wipes down the bar with practiced efficiency. 'Inspector McLevy. Heard about poor Grant. Terrible business.'",
+      "left": {
+        "label": "Ask about Captain MacKay",
+        "outcome": {
+          "text": "'Aye, he was here last night. Him and his whole crew, drinking and singing until past midnight. I remember because they ran up quite a tab.' She pauses. 'MacKay's rough, but he's no killer.'",
+          "grant_clues": ["clue_captain_alibi"],
+          "set_flags": ["visited_jenny", "has_witness_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask what she knows about the docks",
+        "outcome": {
+          "text": "'I see everything from here, Inspector. Ships come and go. Cargo moves in the night. Grant knew something was wrong - he told me so himself, just last week. Said he was close to proving it.'",
+          "grant_clues": ["clue_grant_investigation"],
+          "set_flags": ["visited_jenny"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_mr_davidson",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "mr_davidson",
+      "narrative": "James Davidson's office overlooks the docks. He's dressed in expensive clothes, but there's a tightness around his eyes. 'Inspector. I assume this is about Grant's unfortunate death.'",
+      "left": {
+        "label": "Ask about his relationship with Grant",
+        "outcome": {
+          "text": "'Grant was... thorough. Perhaps too thorough. His inspections delayed my shipments, cost me money.' Davidson's jaw tightens. 'But I certainly didn't kill him. I was at a dinner party in the New Town last night.'",
+          "grant_clues": ["clue_davidson_threat"],
+          "set_flags": ["questioned_davidson", "met_davidson"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about his business",
+        "outcome": {
+          "text": "'My shipping company is perfectly legitimate, Inspector. Every cargo properly documented.' But ye notice the stack of unpaid bills on his desk, the nervous way he fidgets with his watch chain.",
+          "grant_clues": ["clue_davidson_finances"],
+          "set_flags": ["questioned_davidson", "met_davidson"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_agnes_grant",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["visited_agnes"]
+      },
+      "weight": 3,
+      "sprite": "lady",
+      "character": "agnes_grant",
+      "narrative": "Agnes Grant's modest room in the Old Town is neat and spare. She's been crying, but composes herself when ye arrive. 'Inspector. Thank you for coming. William was all I had.'",
+      "left": {
+        "label": "Offer condolences",
+        "outcome": {
+          "text": "'He was a good man, Inspector. Honest. That's what killed him, I think. He wouldn't look the other way, not for anyone.' She wipes her eyes. 'He told me he was close to exposing something big at the docks.'",
+          "grant_clues": ["clue_grant_investigation"],
+          "set_flags": ["visited_agnes", "met_agnes"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about his personal life",
+        "outcome": {
+          "text": "'William lived simply. Saved his money. He left me a small inheritance - £150. I didn't even know about it until the solicitor told me.' She looks genuinely surprised.",
+          "grant_clues": ["clue_agnes_inheritance"],
+          "set_flags": ["visited_agnes", "met_agnes"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_grants_lodgings",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["searched_grants_room"]
+      },
+      "weight": 3,
+      "sprite": "interior",
+      "narrative": "Grant's lodgings are as neat as the man himself. A single room, sparsely furnished. His personal effects await yer investigation.",
+      "left": {
+        "label": "Search his desk",
+        "outcome": {
+          "text": "Ye find Grant's private notebook, filled with meticulous observations. Ships arriving at odd hours. Cargo discrepancies. Names and dates. He was building a case against a smuggling ring - and he was close to having proof.",
+          "grant_clues": ["clue_grant_investigation", "clue_smuggling_ring"],
+          "set_flags": ["searched_grants_room", "has_investigation_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check his personal papers",
+        "outcome": {
+          "text": "Among his papers: a will leaving everything to his sister Agnes, bank statements showing modest savings, and letters from Agnes thanking him for his support. A simple life, honestly lived.",
+          "grant_clues": ["clue_agnes_inheritance"],
+          "set_flags": ["searched_grants_room"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_shaw_office",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_shaw"],
+        "excludes_flags": ["searched_shaw_office"]
+      },
+      "weight": 4,
+      "sprite": "interior",
+      "narrative": "Shaw's office at the docks is cluttered with manifests and cargo records. The foreman is out supervising a shipment. Ye have a few minutes alone.",
+      "left": {
+        "label": "Search his desk",
+        "outcome": {
+          "text": "Hidden in a drawer: a ledger showing payments to 'W.G.' - £50 monthly for six months. Bribery? Or is someone trying to make it look that way? And there's a crumpled letter, unsent: 'I never meant for it to go this far...'",
+          "grant_clues": ["clue_bribery_payments", "clue_shaw_confession_letter"],
+          "set_flags": ["searched_shaw_office", "has_shaw_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check his locker",
+        "outcome": {
+          "text": "At the bottom of Shaw's work locker, hidden beneath spare clothes: a shirt with dark stains. Blood. Fresh enough to still be damp. Shaw has some explaining to do.",
+          "grant_clues": ["clue_blood_on_clothes"],
+          "set_flags": ["searched_shaw_office", "has_shaw_evidence"],
+          "turn_cost": 2
+        }
+      }
+    },
+    {
+      "id": "card_gambling_houses",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_shaw"],
+        "excludes_flags": ["checked_gambling_debts"]
+      },
+      "weight": 3,
+      "sprite": "interior",
+      "narrative": "The gambling houses of Edinburgh know Thomas Shaw well. Too well. Ye make the rounds, asking questions.",
+      "left": {
+        "label": "Investigate Shaw's debts",
+        "outcome": {
+          "text": "The picture is clear: Shaw owes £300 across three establishments. His wages as foreman couldn't touch these debts. He needed money desperately. Twenty casks of brandy would fetch a good price on the black market.",
+          "grant_clues": ["clue_shaw_debts"],
+          "set_flags": ["checked_gambling_debts", "has_motive_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Ask about recent payments",
+        "outcome": {
+          "text": "None of the gambling houses report recent payments from Shaw. His debts are growing, not shrinking. The man is desperate - and desperate men do desperate things.",
+          "grant_clues": ["clue_shaw_debts"],
+          "set_flags": ["checked_gambling_debts"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_night_watchman",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["has_physical_evidence"],
+        "excludes_flags": ["questioned_watchman"]
+      },
+      "weight": 3,
+      "sprite": "constable",
+      "narrative": "The night watchman who patrols the docks remembers something about that night. Ye find him making his rounds.",
+      "left": {
+        "label": "Question him about that night",
+        "outcome": {
+          "text": "'I saw someone near the bonded warehouse around eleven, Inspector. Big fellow, moving quick. Carrying something heavy. Looked like Shaw, but I cannae be certain in the dark.'",
+          "grant_clues": ["clue_witness_testimony"],
+          "set_flags": ["questioned_watchman", "has_witness_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about unusual activity",
+        "outcome": {
+          "text": "'The docks are always busy, even at night. But that night was quieter than usual. Almost like someone wanted it that way. And I heard raised voices from near the warehouse, just before eleven.'",
+          "grant_clues": ["clue_witness_testimony"],
+          "set_flags": ["questioned_watchman"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_boot_prints",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["examined_body"],
+        "excludes_flags": ["examined_prints"]
+      },
+      "weight": 3,
+      "sprite": "footprint",
+      "narrative": "Ye return to the murder scene. The mud near Grant's body holds clear boot prints.",
+      "left": {
+        "label": "Examine the prints carefully",
+        "outcome": {
+          "text": "The prints are distinctive - work boots with a worn left heel. Ye've seen boots like these before. On Thomas Shaw's feet. The prints lead to and from the bonded warehouse.",
+          "grant_clues": ["clue_shaw_boots"],
+          "set_flags": ["examined_prints", "has_physical_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Make a quick sketch",
+        "outcome": {
+          "text": "Ye sketch the print pattern. Later, ye can compare it to suspects' boots. The evidence is building, piece by piece.",
+          "set_flags": ["examined_prints"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_cowgate_tavern",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["has_cargo_evidence"],
+        "excludes_flags": ["found_brandy"]
+      },
+      "weight": 4,
+      "sprite": "interior",
+      "narrative": "A tip leads ye to a tavern in the Cowgate. The keeper recently acquired a large quantity of French brandy.",
+      "left": {
+        "label": "Question the tavern keeper",
+        "outcome": {
+          "text": "'Aye, I bought twenty casks two days ago. Good price, no questions asked. The seller was a dock worker - rough hands, nervous manner. Wouldn't give his name.' Twenty casks. The exact amount missing.",
+          "grant_clues": ["clue_brandy_sale"],
+          "set_flags": ["found_brandy", "has_cargo_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Inspect the brandy",
+        "outcome": {
+          "text": "The casks bear the same markings as those on the Edinburgh Rose's manifest. This is the missing cargo, no doubt about it. Now ye just need to prove who sold it.",
+          "grant_clues": ["clue_brandy_sale"],
+          "set_flags": ["found_brandy"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_shaw_confrontation",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_shaw", "has_shaw_evidence"],
+        "excludes_flags": ["confronted_shaw"]
+      },
+      "weight": 5,
+      "sprite": "constable",
+      "character": "thomas_shaw",
+      "narrative": "Ye find Shaw at the docks, supervising a cargo transfer. When he sees ye approaching with constables, his face goes white.",
+      "left": {
+        "label": "Present the evidence",
+        "outcome": {
+          "text": "Shaw collapses onto a crate. 'I didn't mean to kill him! The debts... I was desperate. I took the brandy, and Grant caught me. We fought. The hook... it was an accident!' His voice breaks. 'God help me, it was an accident.'",
+          "set_flags": ["confronted_shaw", "ready_to_accuse"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Arrest him",
+        "outcome": {
+          "text": "'Thomas Shaw, I am arresting ye for the murder of William Grant.' He doesn't resist. The fight has gone out of him. 'I'm sorry,' he whispers. 'I'm so sorry.'",
+          "set_flags": ["confronted_shaw", "ready_to_accuse"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_davidson_followup",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_davidson"],
+        "excludes_flags": ["davidson_second_visit"]
+      },
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "mr_davidson",
+      "narrative": "Ye return to Davidson's office with more questions. He's pacing nervously when ye arrive.",
+      "left": {
+        "label": "Press him about his finances",
+        "outcome": {
+          "text": "'Yes, my business is struggling! But that doesn't make me a murderer!' Davidson's composure cracks. 'Grant's delays were costing me, but I was at a dinner party with the Lord Provost himself. Check if ye don't believe me!'",
+          "grant_clues": ["clue_davidson_finances"],
+          "set_flags": ["davidson_second_visit"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the smuggling ring",
+        "outcome": {
+          "text": "'Smuggling? I run a legitimate business, Inspector!' But his eyes shift. 'Though... I've heard rumors. Cargo going missing. Foremen taking bribes. Grant was investigating it, I think.'",
+          "grant_clues": ["clue_smuggling_ring"],
+          "set_flags": ["davidson_second_visit"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_docks_atmosphere",
+      "type": "always",
+      "weight": 1,
+      "sprite": "street",
+      "narrative": "The docks are alive with activity. Ships creak at their moorings. Gulls cry overhead. Cargo swings through the air on hooks and chains. This is Leith - where Edinburgh meets the sea.",
+      "left": {
+        "label": "Observe the workers",
+        "outcome": {
+          "text": "Dock workers move with practiced efficiency, loading and unloading ships. Hard men doing hard work. Any one of them could wield a cargo hook as a weapon.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Consider the case",
+        "outcome": {
+          "text": "Murder at the docks. Missing cargo. A customs officer who wouldn't look the other way. The pieces are there - ye just need to fit them together.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_ready_to_accuse",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["has_shaw_evidence", "has_motive_evidence", "has_physical_evidence"],
+        "excludes_flags": ["ready_to_accuse"]
+      },
+      "weight": 5,
+      "sprite": "detective",
+      "narrative": "The case is clear now. Thomas Shaw, desperate with gambling debts, stole the brandy. When Grant discovered the theft, Shaw killed him to protect his crime. The evidence is overwhelming.",
+      "left": {
+        "label": "Make the accusation",
+        "outcome": {
+          "text": "Ye have enough to bring Shaw before the magistrate. The bloodied hook, the boot prints, the hidden brandy, the gambling debts, the confession letter. Justice for William Grant is within reach.",
+          "set_flags": ["ready_to_accuse"],
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Gather one more piece",
+        "outcome": {
+          "text": "Almost there. But one more confirmation couldn't hurt. The Procurator Fiscal demands certainty.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_fog_on_docks",
+      "type": "always",
+      "weight": 1,
+      "sprite": "street",
+      "narrative": "Fog rolls in from the Firth, wrapping the docks in grey. Ships become ghosts. The smell of salt and tar fills the air.",
+      "left": {
+        "label": "Press on",
+        "outcome": {
+          "text": "The fog hides many things, but not the truth. Not from James McLevy.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Stop and think",
+        "outcome": {
+          "text": "Ye stand in the fog and think about greed. About desperation. About a man who killed to hide his theft. The oldest story in the world.",
+          "turn_cost": 1
+        }
+      }
+    }
+  ],
+
+  "endings": {
+    "win": {
+      "title": "Justice at Leith",
+      "text": "Ye present the evidence to the Procurator Fiscal. The bloodied cargo hook. The boot prints matching Shaw's. The hidden brandy sold in the Cowgate. The gambling debts. The confession letter. The warehouse access log.\n\nThomas Shaw confesses fully. The gambling debts had crushed him. He stole the brandy to pay them off. When William Grant discovered the theft during his inspection, they fought. Shaw grabbed the cargo hook in panic. One blow. Grant fell.\n\n'I never meant to kill him,' Shaw weeps. 'I just wanted to make the debts go away.'\n\nBut murder is murder, whether planned or panicked. Shaw will hang. And William Grant, the honest customs officer who wouldn't look the other way, can rest in peace.\n\nAnother case closed in the ledger of James McLevy.",
+      "sprite": "detective"
+    },
+    "wrong_accusation": {
+      "title": "The Wrong Man",
+      "text": "The magistrate examines yer evidence and shakes his head. 'This willnae hold, Inspector. Not enough. Not nearly enough.'\n\nYer suspect goes free. The real killer walks the docks of Leith, and William Grant's murder goes unavenged. Sometimes justice slips through yer fingers like water.",
+      "sprite": "street"
+    },
+    "time_up": {
+      "title": "The Trail Goes Cold",
+      "text": "The fog rolls in thick over Leith docks. Ships depart on the tide, carrying their secrets with them. The killer has had time to cover their tracks, to disappear into the warren of Edinburgh's streets.\n\nWilliam Grant's murder joins the long list of unsolved crimes. The docks keep their secrets, and the sea keeps its silence.",
+      "sprite": "street"
+    }
+  },
+
+  "briefing": {
+    "title": "The Leith Smuggler",
+    "text": "March 1857. William Grant, a customs officer known for his incorruptible nature, has been found murdered at Leith docks. The cargo he was inspecting - twenty casks of valuable French brandy - has vanished into the Edinburgh night.\n\nAs Detective Inspector James McLevy, ye must navigate the dangerous world of the docks, where smuggling is common and life is cheap. Someone killed to protect their crime. Someone who knew the docks well enough to make cargo disappear.\n\nThe port of Leith is where Edinburgh's wealth flows in and out. It's also where greed and violence meet in the dark.",
+    "objectives": [
+      "Determine who killed William Grant and why",
+      "Discover what happened to the missing brandy",
+      "Expose the smuggling operation Grant was investigating"
+    ]
+  }
+}

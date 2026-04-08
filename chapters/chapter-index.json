@@ -16,5 +16,14 @@
     "difficulty": "standard",
     "estimated_minutes": 12,
     "file": "chapters/ghost-of-calton-hill/chapter.json"
+  },
+  {
+    "id": "the-leith-smuggler",
+    "title": "The Leith Smuggler",
+    "subtitle": "A Port Mystery",
+    "author": "Cascade AI",
+    "difficulty": "standard",
+    "estimated_minutes": 12,
+    "file": "chapters/the-leith-smuggler/chapter.json"
   }
 ]
