@@ -1,0 +1,820 @@
+{
+  "meta": {
+    "id": "ghost-of-calton-hill",
+    "title": "The Ghost of Calton Hill",
+    "subtitle": "A Supernatural Mystery",
+    "author": "Cascade AI",
+    "version": "1.0",
+    "description": "A university professor is found dead at Calton Hill, where locals whisper of a ghost haunting the unfinished monument.",
+    "setting": "Edinburgh, November 1855",
+    "difficulty": "standard",
+    "max_turns": 32,
+    "estimated_minutes": 12,
+    "credits": "Inspired by James McLevy's cases involving academic disputes and supernatural phenomena used to mask rational crimes."
+  },
+
+  "characters": [
+    {
+      "id": "mclevy",
+      "name": "Inspector McLevy",
+      "description": "Edinburgh's tenacious detective. Irish-born, sharp-eyed, philosophical.",
+      "sprite": "detective",
+      "is_suspect": false
+    },
+    {
+      "id": "professor_blackwood",
+      "name": "Professor Malcolm Blackwood",
+      "description": "Esteemed archaeologist, expert in Celtic artifacts. Recently made a major discovery.",
+      "sprite": "gentleman",
+      "is_suspect": false
+    },
+    {
+      "id": "professor_finlay",
+      "name": "Professor Alistair Finlay",
+      "description": "Blackwood's academic rival. Facing professional ruin and financial ruin.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    },
+    {
+      "id": "eleanor_blackwood",
+      "name": "Eleanor Blackwood",
+      "description": "The victim's wife. Elegant and composed, with a mysterious past.",
+      "sprite": "lady",
+      "is_suspect": true
+    },
+    {
+      "id": "tam_reid",
+      "name": "Thomas 'Tam' Reid",
+      "description": "Night watchman who patrols Calton Hill. Saw the 'ghost' on the night of the murder.",
+      "sprite": "constable",
+      "is_suspect": false
+    },
+    {
+      "id": "dr_macleod",
+      "name": "Dr Catherine MacLeod",
+      "description": "Physician who examined the body. Professional and thorough.",
+      "sprite": "doctor",
+      "is_suspect": false
+    },
+    {
+      "id": "professor_hume",
+      "name": "Professor James Hume",
+      "description": "Department head with mounting gambling debts. Seen arguing with Blackwood.",
+      "sprite": "gentleman",
+      "is_suspect": true
+    },
+    {
+      "id": "mary_servant",
+      "name": "Mary",
+      "description": "The Blackwoods' housemaid. Overheard arguments in the household.",
+      "sprite": "lady",
+      "is_suspect": false
+    }
+  ],
+
+  "solution": {
+    "suspect": "professor_finlay",
+    "motive": "clue_stolen_research",
+    "method": "clue_pushed_from_monument"
+  },
+
+  "clues": [
+    {
+      "id": "clue_pushed_from_monument",
+      "name": "Injuries Inconsistent with Fall",
+      "description": "Dr MacLeod's examination suggests the victim was pushed, not fell.",
+      "detail": "The physician notes: 'The injuries show signs of impact from behind, consistent with a push rather than a simple fall. There are bruises on the upper back that wouldn't occur from tumbling down stairs.'",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_stolen_research",
+      "name": "Missing Research Papers",
+      "description": "Blackwood's breakthrough Celtic research papers are missing from his office.",
+      "detail": "The victim's safe is open and his most valuable research papers on Celtic artifacts are gone. These papers represented years of work and would have made him famous. The lock shows no signs of forced entry.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_finlay_desperation",
+      "name": "Finlay's Financial Ruin",
+      "description": "Professor Finlay was facing bankruptcy and professional disgrace.",
+      "detail": "University records show Finlay had massive gambling debts and was about to be dismissed for plagiarism. Blackwood's success would have sealed his fate. Finlay stood to lose everything: his position, his reputation, his income.",
+      "sprite": "coin",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_ghost_sighting",
+      "name": "The Night Watchman's Testimony",
+      "description": "Tam Reid saw a ghostly figure near the monument on the night of the murder.",
+      "detail": "Tam Reid reports: 'I saw it clear as day. A figure in white, glowing like moonlight, floating near the monument. Then I heard a cry and something falling. When I got there, Professor Blackwood was at the bottom.'",
+      "sprite": "footprint",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_white_cloth",
+      "name": "Torn White Cloth",
+      "description": "A strip of white cloth caught on the monument's stonework.",
+      "detail": "Found snagged on the rough stonework near where the body fell. Fine white fabric, like a bedsheet or tablecloth, with a small tear. Could be part of a costume... or something used to create a 'ghostly' effect.",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_eleanor_alibi",
+      "name": "Eleanor's Alibi",
+      "description": "Mrs Blackwood was at a charity concert the night of the murder.",
+      "detail": "Multiple witnesses place Eleanor Blackwood at a charity concert at the Music Hall on Queen Street from 8 PM until midnight. She was seen by dozens of prominent citizens including the Lord Provost.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_hume_debts",
+      "name": "Professor Hume's Gambling Debts",
+      "description": "Professor Hume owed Blackwood a significant sum of money.",
+      "detail": "The university bursar's records show Hume borrowed £200 from Blackwood three months ago and has been unable to repay. Witnesses report heated arguments between them about the debt.",
+      "sprite": "coin",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_academic_rivalry",
+      "name": "Academic Rivalry",
+      "description": "Finlay and Blackwood were fierce competitors for the same position.",
+      "detail": "Both professors were competing for the prestigious Chair of Archaeology. Blackwood's recent discovery of Celtic artifacts made him the clear frontrunner, leaving Finlay with nothing.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_mary_testimony",
+      "name": "The Housemaid's Testimony",
+      "description": "Mary overheard Professor Finlay threatening Blackwood.",
+      "detail": "The housemaid reports: 'Professor Finlay came to the house last week. I heard him through the study door. He was shouting about 'years of work ruined' and 'you won't get away with this.' He sounded desperate.'",
+      "sprite": "handkerchief",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_monument_access",
+      "name": "Monument Access Key",
+      "description": "Only university faculty had keys to the monument after hours.",
+      "detail": "The National Monument was locked to the public after dark. Only university professors conducting research had keys. Both Blackwood and Finlay possessed such keys.",
+      "sprite": "key",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_lab_equipment",
+      "name": "Chemical Residue",
+      "description": "Strange chemical residue on the monument steps.",
+      "detail": "A faint residue of phosphorus and other chemicals found on the steps where the 'ghost' was seen. These chemicals can create a glowing effect when exposed to air, commonly used in theatrical productions.",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_eleanor_past",
+      "name": "Eleanor's Secret Past",
+      "description": "Mrs Blackwood was once engaged to Professor Finlay.",
+      "detail": "University gossip reveals Eleanor Blackwood was previously engaged to Alistair Finlay until she met and married Malcolm Blackwood. The engagement ended bitterly.",
+      "sprite": "handkerchief",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_time_of_death",
+      "name": "Time of Death",
+      "description": "Death occurred between 10 PM and midnight on November 5th.",
+      "detail": "Dr MacLeod's examination places the time of death between 10 PM and midnight, based on body temperature and rigor mortis. This matches the time Tam Reid saw the 'ghost.'",
+      "sprite": "watch",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_finlay_lab",
+      "name": "Chemicals in Finlay's Laboratory",
+      "description": "Finlay's lab contains the same chemicals found at the monument.",
+      "detail": "A search of Professor Finlay's laboratory reveals bottles of phosphorus and other chemicals matching the residue found at the monument. Finlay claims they're for experiments, but the quantities suggest other uses.",
+      "sprite": "bottle",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_published_claim",
+      "name": "Finlay's Published Claim",
+      "description": "Finlay published a paper claiming Blackwood's discovery as his own.",
+      "detail": "Found in Finlay's desk: a draft paper claiming credit for Blackwood's Celtic discovery, dated the day after the murder. Finlay was preparing to steal his rival's greatest achievement.",
+      "sprite": "document",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_supernatural_rumors",
+      "name": "Local Supernatural Rumors",
+      "description": "Stories of a ghost at Calton Hill have circulated for weeks.",
+      "detail": "Local newspapers and gossip columns mention sightings of a ghostly figure at Calton Hill for several weeks before the murder. Someone was preparing the supernatural story in advance.",
+      "sprite": "newspaper",
+      "is_red_herring": false
+    },
+    {
+      "id": "clue_hume_threat",
+      "name": "Hume's Recorded Threat",
+      "description": "Professor Hume threatened Blackwood over the debt.",
+      "detail": "A colleague reports overhearing Hume tell Blackwood: 'If you don't give me more time, I'll make you regret it.' This was two days before the murder.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_eleanor_inheritance",
+      "name": "Life Insurance Policy",
+      "description": "Blackwood had a large life insurance policy benefiting his wife.",
+      "detail": "Found among Blackwood's papers: a £1,000 life insurance policy taken out six months ago, with Eleanor Blackwood as the sole beneficiary. The policy would pay double in case of accidental death.",
+      "sprite": "document",
+      "is_red_herring": true
+    },
+    {
+      "id": "clue_finlay_absence",
+      "name": "Finlay's Missing Alibi",
+      "description": "Professor Finlay has no alibi for the time of the murder.",
+      "detail": "Professor Finlay claims he was working late in his laboratory, but no one can confirm this. His laboratory assistant had already gone home. Finlay was alone and unaccounted for during the crucial hours.",
+      "sprite": "footprint",
+      "is_red_herring": false
+    }
+  ],
+
+  "cards": [
+    {
+      "id": "card_opening",
+      "type": "sequence",
+      "sequence_position": 0,
+      "sprite": "graveyard",
+      "narrative": "The fog hangs heavy over Calton Hill as ye climb toward the unfinished National Monument. Constable Reid is waiting, lantern held high. 'It's Professor Blackwood, Inspector. Found at the base of the monument just after midnight.'",
+      "left": {
+        "label": "Examine the body",
+        "outcome": {
+          "text": "Ye kneel beside the body. Professor Blackwood lies broken on the stone steps, his eyes wide with shock. No obvious wounds, but the position of the body suggests... something else. A faint chemical smell hangs in the air.",
+          "grant_clues": ["clue_pushed_from_monument", "clue_time_of_death"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Question the night watchman",
+        "outcome": {
+          "text": "'I saw it, Inspector! A ghost! White and glowing, floating near the top of the monument. Then I heard a cry and something falling. When I got there, the Professor was... well.' Reid crosses himself. 'The ghost of Calton Hill, they call it.'",
+          "grant_clues": ["clue_ghost_sighting"],
+          "set_flags": ["questioned_reid", "has_ghost_evidence"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_return_to_body",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_reid"],
+        "excludes_flags": ["examined_body"]
+      },
+      "weight": 5,
+      "sprite": "graveyard",
+      "narrative": "The body still lies where it fell. Ye haven't examined it properly yet. The fog seems to press in around ye.",
+      "left": {
+        "label": "Examine the body now",
+        "outcome": {
+          "text": "Ye kneel beside Professor Blackwood. The injuries suggest a push rather than a fall. A faint chemical smell clings to the air around him. Something is not right here.",
+          "grant_clues": ["clue_pushed_from_monument", "clue_time_of_death"],
+          "set_flags": ["examined_body", "has_physical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Focus on the living witnesses",
+        "outcome": {
+          "text": "Ye decide to leave the dead to their peace. The living have more to say, and the clock is ticking.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_search_monument",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "graveyard",
+      "narrative": "Ye approach the unfinished National Monument. Its stone columns stand like skeletons against the foggy sky. The scene of the crime awaits yer investigation.",
+      "left": {
+        "label": "Search the monument base",
+        "outcome": {
+          "text": "Ye find a strip of white fabric snagged on rough stonework near where the body fell. Fine white cloth, like a bedsheet, with a small tear. And there's a strange residue on the steps - chemical, not natural.",
+          "grant_clues": ["clue_white_cloth", "clue_lab_equipment"],
+          "set_flags": ["searched_monument", "has_physical_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check for forced entry",
+        "outcome": {
+          "text": "The monument was locked, as usual. Only university faculty had keys after hours. Ye note the lock shows no signs of forced entry - whoever was here belonged here.",
+          "grant_clues": ["clue_monument_access"],
+          "set_flags": ["searched_monument"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_dr_macleod",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["examined_body"],
+        "excludes_flags": ["visited_macleod"]
+      },
+      "weight": 3,
+      "sprite": "doctor",
+      "character": "dr_macleod",
+      "narrative": "Dr Catherine MacLeod meets ye at her surgery on Queen Street. She carries herself with professional gravity. 'Inspector. I've completed my examination of Professor Blackwood.'",
+      "left": {
+        "label": "Ask about the cause of death",
+        "outcome": {
+          "text": "'The injuries are inconsistent with a simple fall, Inspector. There are contusions on the upper back suggesting impact from behind. And the time of death was between ten and midnight.' She pauses. 'I believe he was pushed.'",
+          "grant_clues": ["clue_pushed_from_monument", "clue_time_of_death"],
+          "set_flags": ["visited_macleod", "has_medical_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the chemical smell",
+        "outcome": {
+          "text": "'Yes, I noticed that too. A phosphorus-based compound, I'd wager. Used in theatrical productions to create glowing effects. Someone was putting on a show, Inspector.'",
+          "grant_clues": ["clue_lab_equipment"],
+          "set_flags": ["visited_macleod"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_professor_finlay",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "professor_finlay",
+      "narrative": "Professor Alistair Finlay's office at the university is cluttered with books and artifacts. He looks up from his desk, his face pale. 'McLevy. I heard about Blackwood. Terrible business.'",
+      "left": {
+        "label": "Ask about his relationship with Blackwood",
+        "outcome": {
+          "text": "'We were... professional rivals, Inspector. Competing for the same position. But I assure you, I bear him no ill will.' His hands tremble slightly. 'His success would have been good for the university.'",
+          "grant_clues": ["clue_academic_rivalry"],
+          "set_flags": ["questioned_finlay", "met_finlay"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about his whereabouts last night",
+        "outcome": {
+          "text": "'I was working late in my laboratory. Research doesn't wait for daylight.' He avoids yer eye. 'No one can confirm this, I suppose. My assistant had gone home.'",
+          "grant_clues": ["clue_finlay_absence"],
+          "set_flags": ["questioned_finlay", "met_finlay"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_eleanor_blackwood",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["visited_eleanor"]
+      },
+      "weight": 3,
+      "sprite": "lady",
+      "character": "eleanor_blackwood",
+      "narrative": "The Blackwood residence on Charlotte Square is the height of New Town elegance. Eleanor Blackwood receives ye in the drawing room, composed and dignified in black silk.",
+      "left": {
+        "label": "Offer condolences",
+        "outcome": {
+          "text": "'Thank you, Inspector. Malcolm was a good man. Dedicated to his work.' She smooths her black silk dress. 'I was at the charity concert last night. The Lord Provost can confirm my attendance.'",
+          "grant_clues": ["clue_eleanor_alibi"],
+          "set_flags": ["visited_eleanor", "met_eleanor"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about their marriage",
+        "outcome": {
+          "text": "'We were happy, Inspector. Malcolm's work meant everything to him. His recent discovery... it was going to change everything.' A shadow crosses her face. 'Everything.'",
+          "set_flags": ["visited_eleanor", "met_eleanor"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_professor_hume",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "gentleman", 
+      "character": "professor_hume",
+      "narrative": "Professor James Hume, head of the archaeology department, paces his office like a caged animal. 'McLevy! This is a disaster for the university. An absolute disaster.'",
+      "left": {
+        "label": "Ask about Blackwood's research",
+        "outcome": {
+          "text": "'Brilliant! Absolutely brilliant! Those Celtic artifacts... they would have put Edinburgh on the archaeological map.' He stops pacing. 'But there were... professional jealousies, of course. Always are.'",
+          "grant_clues": ["clue_academic_rivalry"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about his relationship with Blackwood",
+        "outcome": {
+          "text": "Hume looks away. 'We had some... financial disagreements. I owed him money. But I would never! Never!' His voice rises with emotion. 'People argue, Inspector. It doesnnae make them murderers!'",
+          "grant_clues": ["clue_hume_debts"],
+          "set_flags": ["questioned_hume"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_mary_servant",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["visited_eleanor"],
+        "excludes_flags": ["questioned_mary"]
+      },
+      "weight": 2,
+      "sprite": "lady",
+      "character": "mary_servant",
+      "narrative": "A young housemaid approaches ye hesitantly as ye leave the Blackwood residence. 'Inspector? If I could have a word? In private?'",
+      "left": {
+        "label": "Listen to her",
+        "outcome": {
+          "text": "'Professor Finlay came to the house last week. I heard him through the study door. He was shouting about 'years of work ruined' and 'you won't get away with this.' He sounded desperate, Inspector. Truly desperate.'",
+          "grant_clues": ["clue_mary_testimony"],
+          "set_flags": ["questioned_mary", "has_witness_evidence"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Direct her to the authorities",
+        "outcome": {
+          "text": "'I cannae, Inspector! I fear for my position! For my safety!' She scurries away like a frightened mouse. Some witnesses need more coaxing than others.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_blackwood_office",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": [],
+        "excludes_flags": ["searched_blackwood_office"]
+      },
+      "weight": 3,
+      "sprite": "interior",
+      "narrative": "Professor Blackwood's university office stands untouched since his death. Books line the walls, artifacts clutter every surface. His research materials await yer investigation.",
+      "left": {
+        "label": "Search his desk",
+        "outcome": {
+          "text": "Ye find a locked safe. It's been opened - no forced entry. Inside, everything is there except his most recent research papers on the Celtic discovery. They're gone.",
+          "grant_clues": ["clue_stolen_research"],
+          "set_flags": ["searched_blackwood_office", "has_theft_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check his correspondence",
+        "outcome": {
+          "text": "Among his papers, ye find a life insurance policy for £1,000, with Eleanor as beneficiary. And a letter from Finlay, threatening legal action over 'intellectual property.'",
+          "grant_clues": ["clue_eleanor_inheritance", "clue_academic_rivalry"],
+          "set_flags": ["searched_blackwood_office"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_finlay_laboratory",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_finlay"],
+        "excludes_flags": ["searched_finlay_lab"]
+      },
+      "weight": 4,
+      "sprite": "interior",
+      "narrative": "Professor Finlay's laboratory is locked, but ye have university authority. The air inside smells of chemicals and desperation.",
+      "left": {
+        "label": "Search his chemical supplies",
+        "outcome": {
+          "text": "Ye find bottles of phosphorus and other chemicals matching the residue found at the monument. The quantities suggest theatrical use rather than research. And tucked away in a drawer... Blackwood's missing research papers.",
+          "grant_clues": ["clue_finlay_lab", "clue_stolen_research", "clue_lab_equipment"],
+          "set_flags": ["searched_finlay_lab", "has_finlay_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check his desk",
+        "outcome": {
+          "text": "Ye find a draft paper claiming credit for Blackwood's Celtic discovery, dated the day after the murder. Finlay was preparing to steal his rival's greatest achievement. And university records show massive gambling debts.",
+          "grant_clues": ["clue_published_claim", "clue_finlay_desperation"],
+          "set_flags": ["searched_finlay_lab", "has_finlay_evidence"],
+          "turn_cost": 2
+        }
+      }
+    },
+    {
+      "id": "card_university_records",
+      "type": "always",
+      "one_shot": true,
+      "weight": 2,
+      "sprite": "interior",
+      "narrative": "The university bursar's office holds all the official records. The clerk hesitates before opening the ledgers. 'Professor Blackwood's death... it's shaken the entire institution.'",
+      "left": {
+        "label": "Check financial records",
+        "outcome": {
+          "text": "The records show Professor Hume owed Blackwood £200 and was unable to repay. More damning, Professor Finlay had massive gambling debts and was facing dismissal for plagiarism. Blackwood's success would have sealed his fate.",
+          "grant_clues": ["clue_finlay_desperation", "clue_hume_debts"],
+          "set_flags": ["checked_financials", "has_motive_evidence"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Review academic appointments",
+        "outcome": {
+          "text": "Both Blackwood and Finlay were competing for the prestigious Chair of Archaeology. With Blackwood's recent discovery, Finlay stood no chance. The position - and the funding - would go to Blackwood.",
+          "grant_clues": ["clue_academic_rivalry"],
+          "set_flags": ["checked_financials"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_tam_reid_followup",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_reid"],
+        "excludes_flags": ["reid_second_visit"]
+      },
+      "weight": 2,
+      "sprite": "constable",
+      "character": "tam_reid",
+      "narrative": "Ye find Tam Reid warming himself by a brazier near Calton Hill. He jumps when he sees ye. 'Inspector! I remembered something else about that night.'",
+      "left": {
+        "label": "Hear him out",
+        "outcome": {
+          "text": "'The ghost... it moved wrong. Not like a real spirit. More like someone trying to float. And there was a smell - like matches and sulfur. I thought it was just the fog playing tricks, but...'",
+          "grant_clues": ["clue_lab_equipment", "clue_white_cloth"],
+          "set_flags": ["reid_second_visit"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about access to the monument",
+        "outcome": {
+          "text": "'Only professors have keys after hours. Blackwood and Finlay both. I saw Finlay going up there earlier that evening, around nine o'clock. Said he needed to check something.'",
+          "grant_clues": ["clue_monument_access", "clue_finlay_absence"],
+          "set_flags": ["reid_second_visit"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_newspaper_archives",
+      "type": "always",
+      "one_shot": true,
+      "weight": 1,
+      "sprite": "newspaper",
+      "narrative": "The newspaper office on the High Street keeps extensive archives. The editor looks up from his desk. 'Ghost stories, Inspector? We get plenty of those. What's special about this one?'",
+      "left": {
+        "label": "Search for Calton Hill ghost stories",
+        "outcome": {
+          "text": "Ye find several mentions of a 'ghostly figure' at Calton Hill in recent weeks. The stories started appearing about a month ago, building up the supernatural legend. Someone was preparing the cover story in advance.",
+          "grant_clues": ["clue_supernatural_rumors"],
+          "set_flags": ["researched_newspapers"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Check academic news",
+        "outcome": {
+          "text": "The papers are full of Professor Blackwood's recent discovery. 'The find of the century!' one headline proclaims. Another mentions the 'keen competition' for the new Chair of Archaeology. No names, but the implication is clear.",
+          "grant_clues": ["clue_academic_rivalry"],
+          "set_flags": ["researched_newspapers"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_fog_atmosphere",
+      "type": "always",
+      "weight": 1,
+      "sprite": "graveyard",
+      "narrative": "The Edinburgh fog rolls in from the Firth, thick and cold. Gas lamps become smudges of amber in the murk. The city holds its secrets close in weather like this.",
+      "left": {
+        "label": "Press on through the fog",
+        "outcome": {
+          "text": "Ye pull yer coat tighter and continue. The fog hides many things, but it also reveals them - to those who know how to look.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Stop and consider the supernatural",
+        "outcome": {
+          "text": "Ye stand in the fog and think about ghosts. McLevy has seen many cases where people use the supernatural to hide very human crimes. The question is not whether ghosts exist - but whether this one does.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_eleanor_second_visit",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_eleanor", "has_finlay_evidence"],
+        "excludes_flags": ["confronted_eleanor"]
+      },
+      "weight": 4,
+      "sprite": "lady",
+      "character": "eleanor_blackwood",
+      "narrative": "Ye return to Charlotte Square. Eleanor Blackwood is in the garden, tending to roses despite the cold. She looks up as ye approach, her expression unreadable.",
+      "left": {
+        "label": "Ask about her past with Finlay",
+        "outcome": {
+          "text": "She drops her gardening shears. 'How did you...?' She picks them up, her hands steady. 'Yes. We were engaged once. It ended badly. But that was years ago, Inspector. Before Malcolm.' Her voice is cold.",
+          "grant_clues": ["clue_eleanor_past"],
+          "set_flags": ["confronted_eleanor"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Ask about the insurance policy",
+        "outcome": {
+          "text": "'Malcolm took it out for my security. He was a thoughtful husband.' She clips a rose stem with precision. 'Though I suppose now you'll think it means something else. Detectives always think the worst of people.'",
+          "grant_clues": ["clue_eleanor_inheritance"],
+          "set_flags": ["confronted_eleanor"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_finlay_confrontation",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["met_finlay", "has_finlay_evidence"],
+        "excludes_flags": ["confronted_finlay"]
+      },
+      "weight": 5,
+      "sprite": "gentleman",
+      "character": "professor_finlay",
+      "narrative": "Ye find Professor Finlay in his laboratory, attempting to work but failing. He looks up as ye enter, and something in his face tells him ye know.",
+      "left": {
+        "label": "Present the evidence",
+        "outcome": {
+          "text": "He collapses into his chair. 'I didn't mean to kill him! I just wanted to scare him, to make him withdraw his application for the Chair. The ghost story... it was supposed to make him seem unstable.' Tears stream down his face. 'He fell... I pushed him away from me, and he fell.'",
+          "set_flags": ["confronted_finlay", "ready_to_accuse"],
+          "turn_cost": 2
+        }
+      },
+      "right": {
+        "label": "Arrest him formally",
+        "outcome": {
+          "text": "'Professor Alistair Finlay, I am arresting ye for the murder of Professor Malcolm Blackwood.' He doesn't resist. 'I deserve it,' he whispers. 'I ruined everything.'",
+          "set_flags": ["confronted_finlay", "ready_to_accuse"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_hume_final",
+      "type": "conditional",
+      "one_shot": true,
+      "condition": {
+        "requires_flags": ["questioned_hume"],
+        "excludes_flags": ["hume_final_visit"]
+      },
+      "weight": 2,
+      "sprite": "gentleman",
+      "character": "professor_hume",
+      "narrative": "Professor Hume finds ye near the university quadrangle. He looks desperate. 'Inspector, I need to clear something up. About my argument with Blackwood.'",
+      "left": {
+        "label": "Hear his explanation",
+        "outcome": {
+          "text": "'I threatened him, yes. But not over the debt! Over his discovery! He was planning to leave the university - to take a position in London. His discovery would have been lost to Edinburgh!' He looks genuinely distressed. 'I was angry, but I didnae kill him!'",
+          "grant_clues": ["clue_hume_threat"],
+          "set_flags": ["hume_final_visit"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Dismiss him",
+        "outcome": {
+          "text": "'Professor, I have more pressing matters than yer academic politics.' He flinches at yer tone but nods and walks away. Sometimes the innocent act guilty out of fear.",
+          "set_flags": ["hume_final_visit"],
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_ready_to_accuse",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["has_finlay_evidence", "has_motive_evidence", "has_physical_evidence"],
+        "excludes_flags": ["ready_to_accuse"]
+      },
+      "weight": 5,
+      "sprite": "detective",
+      "narrative": "Ye stand on Calton Hill as dusk falls. The stolen research, the chemical residue, the financial ruin, the academic rivalry - the pieces click into place. The supernatural was always a distraction from a very human crime.",
+      "left": {
+        "label": "Make the accusation",
+        "outcome": {
+          "text": "Ye have enough. Professor Alistair Finlay, desperate over his gambling debts and professional ruin, created a supernatural distraction to cover his murder of his rival. The evidence is clear. Time to face the university authorities.",
+          "set_flags": ["ready_to_accuse"],
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Gather one more piece of evidence",
+        "outcome": {
+          "text": "Almost there. But one more confirmation couldn't hurt. The Procurator Fiscal will accept nothing less than certainty.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_supernatural_path",
+      "type": "conditional",
+      "condition": {
+        "requires_flags": ["has_ghost_evidence"],
+        "excludes_flags": ["has_finlay_evidence"]
+      },
+      "weight": 3,
+      "sprite": "graveyard",
+      "narrative": "The ghost stories swirl around ye like the fog. The night watchman's testimony, the chemical residue, the white cloth - perhaps there really is something supernatural at work here.",
+      "left": {
+        "label": "Follow the supernatural leads",
+        "outcome": {
+          "text": "Ye dive deeper into the ghost stories, the local legends, the supernatural history of Calton Hill. The rational world fades away as ye pursue the possibility that this case is not what it seems.",
+          "set_flags": ["supernatural_investigation"],
+          "turn_cost": 1
+        }
+      },
+      "right": {
+        "label": "Return to rational investigation",
+        "outcome": {
+          "text": "No. McLevy doesn't believe in ghosts. He believes in human greed, human jealousy, human murder. Whatever the supernatural explanation, the truth lies in very human motives.",
+          "turn_cost": 1
+        }
+      }
+    },
+    {
+      "id": "card_church_bells",
+      "type": "always",
+      "weight": 1,
+      "sprite": "street",
+      "narrative": "St Giles' Cathedral sends its bells across the Old Town. Another hour gone. The fog thickens. Somewhere in this city, a murderer goes about their day as though nothing happened.",
+      "left": {
+        "label": "Keep moving",
+        "outcome": {
+          "text": "Ye press on through the crowds. The city does not slow for the dead, nor for those who seek justice for them.",
+          "turn_cost": 0
+        }
+      },
+      "right": {
+        "label": "Sit and think",
+        "outcome": {
+          "text": "Ye find a bench in Princes Street Gardens. The case turns in yer mind like a key in a lock. Almost there. Just need the right pressure, the right angle, and the truth will spring open.",
+          "turn_cost": 1
+        }
+      }
+    }
+  ],
+
+  "endings": {
+    "win": {
+      "title": "Case Closed",
+      "text": "Ye lay out the evidence before the university authorities. The stolen research papers found in Finlay's laboratory, the chemical residue matching his supplies, the torn white cloth from his bedsheets, and most damning - the draft paper claiming Blackwood's discovery as his own, dated the day after the murder.\n\n'It was desperation,' Finlay confesses. 'He was taking everything from me. The position, the fame, the recognition I've worked for my entire life. I created the ghost story to cover my tracks, but I never meant...'\n\nYe nod gravely. Another case solved in the ledger of James McLevy. The supernatural always has a rational explanation - and murder always has a human motive.",
+      "sprite": "detective"
+    },
+    "wrong_accusation": {
+      "title": "A Grave Error",
+      "text": "The university authorities examine yer evidence and shake their heads. 'This willnae hold, Inspector. Not enough. Not nearly enough.'\n\nProfessor Finlay goes free. The ghost of Calton Hill continues to haunt the city's imagination. And somewhere in Edinburgh, a murderer sleeps soundly.",
+      "sprite": "graveyard"
+    },
+    "time_up": {
+      "title": "The Trail Goes Cold",
+      "text": "Night falls over Calton Hill. The fog rolls in thick as wool, and with it goes yer last chance. The university closes ranks, the evidence degrades, and the killer slips into the mists of time.\n\nSome cases remain unsolved forever, becoming the ghost stories that haunt future generations.",
+      "sprite": "graveyard"
+    },
+    "supernatural": {
+      "title": "The Ghost Walks",
+      "text": "Ye've followed the supernatural clues, convinced there's something otherworldly at work. But as ye stand in the fog on Calton Hill, a figure approaches - not a ghost, but Dr MacLeod with a worried expression.\n\n'Inspector, I've been reviewing my notes. The injuries... they don't match a fall. And that chemical residue - it's not natural. Someone created this 'ghost' deliberately.'\n\nYe realize the truth too late. The supernatural was a distraction, a clever ruse to hide a very human crime. The real killer walks free while the city continues to whisper about ghosts.",
+      "sprite": "graveyard"
+    }
+  },
+
+  "briefing": {
+    "title": "The Ghost of Calton Hill",
+    "text": "November 1855. Professor Malcolm Blackwood, Edinburgh's most celebrated archaeologist, has been found dead at the base of Calton Hill's unfinished National Monument. The night watchman claims to have seen a ghostly figure near the monument at the time of death.\n\nAs Detective Inspector James McLevy, ye must navigate between rational investigation and supernatural rumors. Was this a tragic accident? A suicide? Or murder cleverly disguised as something otherworldly?\n\nThe university closes ranks. Rumors fly. And somewhere in the fog-shrouded streets of Auld Reekie, a killer may be hiding behind ghost stories.",
+    "objectives": [
+      "Determine if Professor Blackwood's death was natural, suicide, or murder",
+      "Identify who had the motive and opportunity to kill him",
+      "Discover the truth behind the 'ghost of Calton Hill'"
+    ]
+  }
+}

@@ -7,5 +7,14 @@
     "difficulty": "standard",
     "estimated_minutes": 12,
     "file": "chapters/body-in-the-close/chapter.json"
+  },
+  {
+    "id": "ghost-of-calton-hill",
+    "title": "The Ghost of Calton Hill",
+    "subtitle": "A Supernatural Mystery",
+    "author": "Cascade AI",
+    "difficulty": "standard",
+    "estimated_minutes": 12,
+    "file": "chapters/ghost-of-calton-hill/chapter.json"
   }
 ]
